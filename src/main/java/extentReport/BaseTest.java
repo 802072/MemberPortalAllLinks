@@ -39,7 +39,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import dataDriven.dataDrivenAT;
+import dataDriven.dataDriven;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
@@ -50,7 +50,7 @@ public class BaseTest {
 	public static ExtentReports extentReports;
 	public static ExtentTest extentTest;
 	public static ExtentTest testStepExtentTest;
-	dataDrivenAT d = new dataDrivenAT();
+	dataDriven d = new dataDriven();
 
 	@Parameters("browserName")
 	@BeforeTest
@@ -155,6 +155,22 @@ public class BaseTest {
 		String uname = (String) V70065532.get(1);
 		String pswd = (String) V70065532.get(2);
 		String hPlan = (String) V70065532.get(5);
+		login(uname, pswd, hPlan);
+		}
+	
+	public void loginSelectHealth() throws IOException, InterruptedException {
+		ArrayList V80041737 = d.getData("V80041737", "loginCred");
+		String uname = (String) V80041737.get(1);
+		String pswd = (String) V80041737.get(2);
+		String hPlan = (String) V80041737.get(5);
+		login(uname, pswd, hPlan);
+		}
+	
+	public void loginEasyCare() throws IOException, InterruptedException {
+		ArrayList V70040578 = d.getData("V70040578", "loginCred");
+		String uname = (String) V70040578.get(1);
+		String pswd = (String) V70040578.get(2);
+		String hPlan = (String) V70040578.get(5);
 		login(uname, pswd, hPlan);
 		}
 	

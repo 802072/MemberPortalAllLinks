@@ -1,79 +1,81 @@
 package memberPortal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import dataDriven.dataDriven;
 import extentReport.BaseTest;
 
-public class VNSHealthMLTC extends BaseTest {
+public class SelectHealth extends BaseTest {
 	dataDriven d = new dataDriven();
 
 	// Homepage
-		@Test(groups = "Homepage")
-		public void homePage() throws InterruptedException, IOException {
-			loginMLTC();
-			//Click Name
-			clickElement("HP0101", "homePage");
-			driver.navigate().back();
-			//Click View And Print ID Card
-			clickElement("HP0102", "homePage");
-			driver.navigate().back();
-			//Click Check My Benefits
-			clickElementJSExecute("HP0103", "homePage");
-			driver.navigate().back();
-			//Click View My Care Team
-			clickElementJSExecute("HP0104", "homePage");
-			driver.navigate().back();
-			//Click Review My Medical Supplies
-			clickElementJSExecute("HP0105", "homePage");
-			driver.navigate().back();
-			//Click My Action Items
-			clickElementJSExecute("HP0106", "homePage");
-			driver.navigate().back();
-			//Click View Claims
-			clickElementJSExecute("HP0107", "homePage");
-			driver.navigate().back();
-			//Click View Service Authorizations
-			clickElementJSExecute("HP0108", "homePage");
-			//Click Technical Support Link
-			clickElement("HP0109", "homePage");
-			driver.navigate().back();
-			//Click Terms of Use Link
-			clickElementChildWindow("HP0110", "homePage");
-			//Click Privacy Policy Link
-			clickElementChildWindow("HP0111", "homePage");
+			@Test(groups = "Homepage")
+			public void homePage() throws InterruptedException, IOException {
+				loginSelectHealth();
+				Thread.sleep(3000);
+				//Click Name
+				clickElement("HP0101", "homePage");
+				driver.navigate().back();
+				//Click View And Print ID Card
+				clickElement("HP0102", "homePage");
+				driver.navigate().back();
+				//Click Check My Benefits
+				clickElementJSExecute("HP0103", "homePage");
+				driver.navigate().back();
+				//Click View My Care Team
+				clickElementJSExecute("HP0104", "homePage");
+				driver.navigate().back();
+				//Click Review My Medical Supplies
+				clickElementJSExecute("HP0105", "homePage");
+				driver.navigate().back();
+				//Click My Action Items
+				clickElementJSExecute("HP0106", "homePage");
+				driver.navigate().back();
+				//Click View Claims
+				clickElementJSExecute("HP0107", "homePage");
+				driver.navigate().back();
+				//Click View Service Authorizations
+				clickElementJSExecute("HP0108", "homePage");
+				driver.navigate().back();
+				//Click Rewards Link
+				clickElementJSExecute("HP0112", "homePage");	
+				driver.navigate().back();
+				//Click Technical Support Link
+				clickElement("HP0109", "homePage");
+				driver.navigate().back();
+				//Click Terms of Use Link
+				clickElementChildWindow("HP0110", "homePage");
+				//Click Privacy Policy Link
+				clickElementChildWindow("HP0111", "homePage");
 
-		}
-		
+			}
 	// Benefits
 	@Test(groups = "Benefits", priority = 1)
 	public void benefits() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
 		clickElement("BE0102", "benefitsMenu");
-		// Click View Member Handbook
-		clickElementChildWindow("BE0103", "benefitsMenu");
-		// Click Member Handbook link
-		clickElementChildWindow("BE0104", "benefitsMenu");
+		
+		// Click Member Handbook Link (this page)
+		clickElementChildWindow("BE0116", "benefitsMenu");
+		
+		// Click Carelon Link
+		clickElementChildWindow("BE0114", "benefitsMenu");
 		// Click Healthplex
 		clickElementChildWindow("BE0105", "benefitsMenu");
 		// Click Superior Vision
 		clickElementChildWindow("BE0106", "benefitsMenu");
-		// Click Click Modivcare
-		clickElementChildWindow("BE0107", "benefitsMenu");
 	}
+
 
 	// ID Card
 	@Test(groups = "Benefits")
 	public void idCard() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
@@ -87,11 +89,23 @@ public class VNSHealthMLTC extends BaseTest {
 
 	}
 
-	
+	// Rewards
+	@Test(groups = "Benefits")
+	public void rewards() throws InterruptedException, IOException {
+		loginSelectHealth();
+		// Click Benefits
+		clickElement("BE0601", "benefitsMenu");
+		// Click Rewards Sub-menu
+		clickElement("BE0602", "benefitsMenu");
+		
+		// Click Download Brochure Link
+		clickElementChildWindow("BE0604", "benefitsMenu");
+	}
+
 	// Plan History
 	@Test(groups = "Benefits")
 	public void planHistory() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
@@ -99,10 +113,24 @@ public class VNSHealthMLTC extends BaseTest {
 	}
 
 	// My Care
+	// myPCP
+	@Test(groups = "My Care")
+	public void myPCP() throws InterruptedException, IOException {
+		loginSelectHealth();
+		// Click My Care Menu
+		clickElement("MC0101", "myCareMenu");
+		// Click My PCP Sub-menu
+		clickElement("MC0102", "myCareMenu");
+		// Click Provider Directory Link
+		clickElementChildWindow("MC0103", "myCareMenu");
+		// Click Request a PCP Change Link
+		clickElementJSExecute("MC0104", "myCareMenu");
+	}
+
 	// myHealthPlanCareTeam
 	@Test(groups = "My Care")
 	public void myHealthPlanCareTeam() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
@@ -115,7 +143,7 @@ public class VNSHealthMLTC extends BaseTest {
 	// serviceAuthorizations
 	@Test(groups = "My Care")
 	public void serviceAuthorizations() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
@@ -125,7 +153,7 @@ public class VNSHealthMLTC extends BaseTest {
 	// My Medical Supplies and Equipment
 	@Test(groups = "My Care")
 	public void myMedicalSupp() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0401", "myCareMenu");
 		// Click My Medica Supp Sub-menu
@@ -136,12 +164,12 @@ public class VNSHealthMLTC extends BaseTest {
 	// MyClaims
 	@Test(groups = "Claims")
 	public void claims() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Claims Menu
 		clickElement("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
 		clickElement("CL0102", "claimsMenu");
-		// Click Submit Reimbursement Request Link
+		//Click Submit Reimbursement Request Link
 		clickElementJSExecute("CL0103", "claimsMenu");
 	}
 
@@ -149,44 +177,50 @@ public class VNSHealthMLTC extends BaseTest {
 	// My Plan Resources
 	@Test(groups = "Resources")
 	public void myPlanResources() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Resources Menu
 		clickElement("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
 		clickElement("RE0102", "resourcesMenu");
-		//Click View All Resources Link
-		clickElementChildWindow("RE0103", "resourcesMenu");
-		//Click Transportation Link
-		clickElementChildWindow("RE0104", "resourcesMenu");
-		//Click Ordering Medical Supplies Link
-		clickElementChildWindow("RE0105", "resourcesMenu");
-		//Click Member Materials and Forms Link
-		clickElementChildWindow("RE0106", "resourcesMenu");
-		//Click Frequently Asked Questions Link
-		clickElementChildWindow("RE0107", "resourcesMenu");
+	
+		//Click Transgender Health Services Link
+		clickElementChildWindow("RE0115", "resourcesMenu");
+		//Click HIV Resources Link
+		clickElementChildWindow("RE0116", "resourcesMenu");
+		//Click Reources for Homeless Individuals Link
+		clickElementChildWindow("RE0117", "resourcesMenu");
+		//Click Home & Community-Based Services Link
+		clickElementChildWindow("RE0118", "resourcesMenu");
+		//Click Provider Search Link
+		clickElementChildWindow("RE0119", "resourcesMenu");
+		//Click Member Forms & Materials Link
+		clickElementChildWindow("RE0120", "resourcesMenu");
+
+
 	}
 
 	// Benefit Partners
 	@Test(groups = "Resources")
 	public void benefitPartners() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Resources Menu
 		clickElement("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
 		clickElement("RE0202", "resourcesMenu");
+		
+		// Click Carelon Link
+		clickElementChildWindow("RE0210", "resourcesMenu");
 		// Click Healthplex
 		clickElementChildWindow("RE0203", "resourcesMenu");
 		// Click Superior Vision
 		clickElementChildWindow("RE0204", "resourcesMenu");
-		// Click Click Modivcare
-		clickElementChildWindow("RE0205", "resourcesMenu");
 	}
 
 	// Grievances and Appeals
 	// Grievances
-	@Test(groups = "Grievances and Appeals")
+	@Test(groups = "Grievances And Appeals")
 	public void grievances() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
@@ -196,9 +230,9 @@ public class VNSHealthMLTC extends BaseTest {
 	}
 
 	// Appeals
-	@Test(groups = "Grievances and Appeals")
+	@Test(groups = "Grievances And Appeals")
 	public void appeals() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0201", "grievancesMenu");
 		// Click Grievances Sub-menu
@@ -210,7 +244,7 @@ public class VNSHealthMLTC extends BaseTest {
 	// Communication Center
 	@Test(groups = "Communication Center")
 	public void communicationCenter() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click Communication Center Menu
 		clickElement("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
@@ -226,7 +260,7 @@ public class VNSHealthMLTC extends BaseTest {
 	// My Account
 	@Test(groups = "My Account")
 	public void myAccount() throws InterruptedException, IOException {
-		loginMLTC();
+		loginSelectHealth();
 		// Click My Account Menu
 		clickElement("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu

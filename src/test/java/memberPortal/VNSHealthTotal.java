@@ -4,11 +4,11 @@ import java.io.IOException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-import dataDriven.dataDrivenAT;
+import dataDriven.dataDriven;
 import extentReport.BaseTest;
 
-public class VNSHealthTotalHMODSNP extends BaseTest {
-	dataDrivenAT d = new dataDrivenAT();
+public class VNSHealthTotal extends BaseTest {
+	dataDriven d = new dataDriven();
 
 	// Homepage
 			@Test(groups = "Homepage")
@@ -228,6 +228,8 @@ public class VNSHealthTotalHMODSNP extends BaseTest {
 		clickElement("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
 		clickElement("CL0102", "claimsMenu");
+		// Click Submit Reimbursement Request Link
+		clickElementJSExecute("CL0103", "claimsMenu");
 	}
 
 	// Resources
