@@ -215,7 +215,7 @@ public class VNSHealthTotal extends BaseTest {
 		loginTotal();
 		// Click My Care Menu
 		clickElement("MC0401", "myCareMenu");
-		// Click My Medica Supp Sub-menu
+		// Click My Medical Supp Sub-menu
 		clickElement("MC0402", "myCareMenu");
 	}
 
