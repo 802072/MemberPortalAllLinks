@@ -27,31 +27,35 @@ public class dataDriven {
 		for (int i = 0; i < sheets; i++) {
 			if (workbook.getSheetName(i).equalsIgnoreCase(sheetName)) {
 				XSSFSheet sheet = workbook.getSheetAt(i);
-				System.out.println("sheet name is :" + workbook.getSheetName(0));
+				System.out.println("sheet name is :" + workbook.getSheetName(i));
 				Iterator<Row> rows = sheet.iterator();
 				Row firstrow = rows.next();
+				
 				Iterator<Cell> ce = firstrow.cellIterator();
 				int k = 0;
 				int column = 0;
 				while (ce.hasNext()) {
 					Cell value = ce.next();
 
-					if (value.getStringCellValue().equalsIgnoreCase("TestCases")) {
+					if (value.getStringCellValue().equalsIgnoreCase("Test Step ID")) {
 						column = k;
+						
 					}
 
 					k++;
 				}
-				//System.out.println("column is :" + k);
+				
 				
 				while (rows.hasNext()) {
 
 					Row r = rows.next();
+					
 
 					if (r.getCell(column).getStringCellValue().equalsIgnoreCase(testcaseName)) {
 						Iterator<Cell> cv = r.cellIterator();
 						while (cv.hasNext()) {
 							Cell c = cv.next();
+							
 							if (c.getCellTypeEnum() == CellType.STRING) {
 
 								a.add(c.getStringCellValue());
@@ -61,6 +65,7 @@ public class dataDriven {
 
 							}
 						}
+					//System.out.println("testcaseName is :" + testcaseName);
 					}
 
 				}
