@@ -11,7 +11,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="homePage" />
 				</methods>
@@ -28,7 +28,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="benefits" />
 				</methods>
@@ -44,7 +44,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="pharmacyAndPrescp" />
 				</methods>
@@ -60,7 +60,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="idCard" />
 				</methods>
@@ -76,7 +76,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="otcBenefits" />
 				</methods>
@@ -92,7 +92,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="flexCard" />
 				</methods>
@@ -108,7 +108,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="rewards" />
 				</methods>
@@ -124,7 +124,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="planHistory" />
 				</methods>
@@ -141,7 +141,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="myPCP" />
 				</methods>
@@ -157,7 +157,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="myHealthPlanCareTeam" />
 				</methods>
@@ -173,7 +173,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="serviceAuthorizations" />
 				</methods>
@@ -189,7 +189,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="myMedicalSupp" />
 				</methods>
@@ -206,7 +206,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="claims" />
 				</methods>
@@ -223,7 +223,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="myPlanResources" />
 				</methods>
@@ -239,7 +239,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="benefitPartners" />
 				</methods>
@@ -256,7 +256,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="grievances" />
 				</methods>
@@ -272,7 +272,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="appeals" />
 				</methods>
@@ -289,7 +289,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="communicationCenter" />
 				</methods>
@@ -306,7 +306,7 @@
 			value="Dayanzi" />
 		<classes>
 			<class
-				name="memberPortal.VNSHealthTotalHMODSNP">
+				name="memberPortal.VNSHealthTotal">
 				<methods>
 					<include name="myAccount" />
 				</methods>

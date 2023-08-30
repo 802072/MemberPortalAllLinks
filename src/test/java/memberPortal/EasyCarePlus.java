@@ -2,14 +2,31 @@ package memberPortal;
 
 import java.io.IOException;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import dataDriven.dataDriven;
 import extentReport.BaseTest;
 
 public class EasyCarePlus extends BaseTest {
 	dataDriven d = new dataDriven();
+	@BeforeSuite
+	public void initialiseExtentReports() {
+		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationEasyCarePlus.html");
+		sparkReporter_all.config().setReportName("Member Portal: Easy Care Plus Plan Automation Report");
+		
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(sparkReporter_all);
 
+		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
+		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
+		extentReports.setSystemInfo("Environment", "Test Environment");
+	
+	}
+	
 	// Homepage
 			@Test(groups = "Homepage")
 			public void homePage() throws InterruptedException, IOException {

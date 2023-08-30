@@ -2,7 +2,11 @@ package memberPortal;
 
 import java.io.IOException;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import dataDriven.dataDriven;
 import extentReport.BaseTest;
@@ -10,47 +14,60 @@ import extentReport.BaseTest;
 public class VNSHealthTotal extends BaseTest {
 	dataDriven d = new dataDriven();
 
-	// Homepage
-			@Test(groups = "Homepage")
-			public void homePage() throws InterruptedException, IOException {
-				loginTotal();
-				Thread.sleep(3000);
-				//Click Name
-				clickElement("HP0101", "homePage");
-				driver.navigate().back();
-				//Click View And Print ID Card
-				clickElement("HP0102", "homePage");
-				driver.navigate().back();
-				//Click Check My Benefits
-				clickElementJSExecute("HP0103", "homePage");
-				driver.navigate().back();
-				//Click View My Care Team
-				clickElementJSExecute("HP0104", "homePage");
-				driver.navigate().back();
-				//Click Review My Medical Supplies
-				clickElementJSExecute("HP0105", "homePage");
-				driver.navigate().back();
-				//Click My Action Items
-				clickElementJSExecute("HP0106", "homePage");
-				driver.navigate().back();
-				//Click View Claims
-				clickElementJSExecute("HP0107", "homePage");
-				driver.navigate().back();
-				//Click View Service Authorizations
-				clickElementJSExecute("HP0108", "homePage");
-				driver.navigate().back();
-				//Click Rewards Link
-				clickElementJSExecute("HP0112", "homePage");	
-				driver.navigate().back();
-				//Click Technical Support Link
-				clickElement("HP0109", "homePage");
-				driver.navigate().back();
-				//Click Terms of Use Link
-				clickElementChildWindow("HP0110", "homePage");
-				//Click Privacy Policy Link
-				clickElementChildWindow("HP0111", "homePage");
+	@BeforeSuite
+	public void initialiseExtentReports() {
+		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationTotal.html");
+		sparkReporter_all.config().setReportName("Member Portal: VNS Health Total Plan Automation Report");
 
-			}
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(sparkReporter_all);
+
+		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
+		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
+		extentReports.setSystemInfo("Environment", "Test Environment");
+	}
+
+	// Homepage
+	@Test(groups = "Homepage")
+	public void homePage() throws InterruptedException, IOException {
+		loginTotal();
+		Thread.sleep(3000);
+		// Click Name
+		clickElement("HP0101", "homePage");
+		driver.navigate().back();
+		// Click View And Print ID Card
+		clickElement("HP0102", "homePage");
+		driver.navigate().back();
+		// Click Check My Benefits
+		clickElementJSExecute("HP0103", "homePage");
+		driver.navigate().back();
+		// Click View My Care Team
+		clickElementJSExecute("HP0104", "homePage");
+		driver.navigate().back();
+		// Click Review My Medical Supplies
+		clickElementJSExecute("HP0105", "homePage");
+		driver.navigate().back();
+		// Click My Action Items
+		clickElementJSExecute("HP0106", "homePage");
+		driver.navigate().back();
+		// Click View Claims
+		clickElementJSExecute("HP0107", "homePage");
+		driver.navigate().back();
+		// Click View Service Authorizations
+		clickElementJSExecute("HP0108", "homePage");
+		driver.navigate().back();
+		// Click Rewards Link
+		clickElementJSExecute("HP0112", "homePage");
+		driver.navigate().back();
+		// Click Technical Support Link
+		clickElement("HP0109", "homePage");
+		driver.navigate().back();
+		// Click Terms of Use Link
+		clickElementChildWindow("HP0110", "homePage");
+		// Click Privacy Policy Link
+		clickElementChildWindow("HP0111", "homePage");
+	}
+
 	// Benefits
 	@Test(groups = "Benefits", priority = 1)
 	public void benefits() throws InterruptedException, IOException {

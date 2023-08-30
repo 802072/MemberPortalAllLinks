@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import dataDriven.dataDriven;
 import extentReport.BaseTest;
@@ -13,6 +17,19 @@ import extentReport.BaseTest;
 public class VNSHealthMLTC extends BaseTest {
 	dataDriven d = new dataDriven();
 
+	@BeforeSuite
+	public void initialiseExtentReports() {
+		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationMLTC.html");
+		sparkReporter_all.config().setReportName("Member Portal: VNS Health MLTC Plan Automation Report");
+		
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(sparkReporter_all);
+
+		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
+		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
+		extentReports.setSystemInfo("Environment", "Test Environment");
+	}
+	
 	// Homepage
 		@Test(groups = "Homepage")
 		public void homePage() throws InterruptedException, IOException {
@@ -47,7 +64,10 @@ public class VNSHealthMLTC extends BaseTest {
 			clickElementChildWindow("HP0110", "homePage");
 			//Click Privacy Policy Link
 			clickElementChildWindow("HP0111", "homePage");
-
+			//Click Feedback Slider
+			clickElement("HP0113", "homePage");
+			//Click Close
+			clickElement("HP0114", "homePage");
 		}
 		
 	// Benefits
