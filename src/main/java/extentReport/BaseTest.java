@@ -6,11 +6,13 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +37,9 @@ import dataDriven.dataDriven;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseTest {
 	public static WebDriver driver;
@@ -122,47 +127,48 @@ public class BaseTest {
 		WebElement signOn1 = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn1.click();
 		Thread.sleep(5000);
+		//handleAlert();
 	}
 
-	public void loginMLTC() throws IOException, InterruptedException {
-		ArrayList V80209467 = d.getData("V80209467", "loginCred");
-		String uname = (String) V80209467.get(1);
-		String pswd = (String) V80209467.get(2);
-		String hPlan = (String) V80209467.get(5);
-		login(uname, pswd, hPlan);
-	}
+//	public void loginMLTC() throws IOException, InterruptedException {
+//		ArrayList V80209467 = d.getData("V80209467", "loginCred");
+//		String uname = (String) V80209467.get(1);
+//		String pswd = (String) V80209467.get(2);
+//		String hPlan = (String) V80209467.get(5);
+//		login(uname, pswd, hPlan);
+//	}
 
-	public void loginTotal() throws IOException, InterruptedException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String uname = (String) V70069794.get(1);
-		String pswd = (String) V70069794.get(2);
-		String hPlan = (String) V70069794.get(5);
-		login(uname, pswd, hPlan);
-	}
+//	public void loginTotal() throws IOException, InterruptedException {
+//		ArrayList V70069794 = d.getData("V70069794", "loginCred");
+//		String uname = (String) V70069794.get(1);
+//		String pswd = (String) V70069794.get(2);
+//		String hPlan = (String) V70069794.get(5);
+//		login(uname, pswd, hPlan);
+//	}
 
-	public void loginECPlus() throws IOException, InterruptedException {
-		ArrayList V70065532 = d.getData("V70065532", "loginCred");
-		String uname = (String) V70065532.get(1);
-		String pswd = (String) V70065532.get(2);
-		String hPlan = (String) V70065532.get(5);
-		login(uname, pswd, hPlan);
-	}
+//	public void loginECPlus() throws IOException, InterruptedException {
+//		ArrayList V70065532 = d.getData("V70065532", "loginCred");
+//		String uname = (String) V70065532.get(1);
+//		String pswd = (String) V70065532.get(2);
+//		String hPlan = (String) V70065532.get(5);
+//		login(uname, pswd, hPlan);
+//	}
 
-	public void loginSelectHealth() throws IOException, InterruptedException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String uname = (String) V80041737.get(1);
-		String pswd = (String) V80041737.get(2);
-		String hPlan = (String) V80041737.get(5);
-		login(uname, pswd, hPlan);
-	}
+//	public void loginSelectHealth() throws IOException, InterruptedException {
+//		ArrayList V80041737 = d.getData("V80041737", "loginCred");
+//		String uname = (String) V80041737.get(1);
+//		String pswd = (String) V80041737.get(2);
+//		String hPlan = (String) V80041737.get(5);
+//		login(uname, pswd, hPlan);
+//	}
 
-	public void loginEasyCare() throws IOException, InterruptedException {
-		ArrayList V70040578 = d.getData("V70040578", "loginCred");
-		String uname = (String) V70040578.get(1);
-		String pswd = (String) V70040578.get(2);
-		String hPlan = (String) V70040578.get(5);
-		login(uname, pswd, hPlan);
-	}
+//	public void loginEasyCare() throws IOException, InterruptedException {
+//		ArrayList V70040578 = d.getData("V70040578", "loginCred");
+//		String uname = (String) V70040578.get(1);
+//		String pswd = (String) V70040578.get(2);
+//		String hPlan = (String) V70040578.get(5);
+//		login(uname, pswd, hPlan);
+//	}
 
 //	@BeforeSuite
 //	public void initialiseExtentReports() {
@@ -182,16 +188,17 @@ public class BaseTest {
 //		// excelWR.createSheet();
 //	}
 
-	public void clickElement(String rowName, String sheetName) throws IOException, InterruptedException {
+	public void clickElement(String rowName, String sheetName, String hPlan) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		element.click();
 		Thread.sleep(6000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(hPlan+rowName + ".jpg")).build());
+		//handleAlert();
 	}
 
-	public void clickElementChildWindow(String rowName, String sheetName) throws IOException, InterruptedException {
+	public void clickElementChildWindow(String rowName, String sheetName, String hPlan) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
@@ -203,20 +210,22 @@ public class BaseTest {
 
 		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(hPlan+rowName + ".jpg")).build());
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
+		//handleAlert();
 	}
 
-	public void clickElementJSExecute(String rowName, String sheetName) throws IOException, InterruptedException {
+	public void clickElementJSExecute(String rowName, String sheetName, String hPlan) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		// element.click();
 		Thread.sleep(3000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(hPlan+rowName + ".jpg")).build());
+		//handleAlert();
 	}
 
 	@AfterSuite
@@ -235,7 +244,7 @@ public class BaseTest {
 			screenshotpath = captureScreenshot("failTest.jpg");
 			extentTest.fail(m.getName() + " has failed");
 			extentTest.log(Status.FAIL, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(screenshotpath).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName() + ".jpg")).build());
 		}
 		if (result.getStatus() == ITestResult.SKIP) {
 
@@ -243,7 +252,7 @@ public class BaseTest {
 			screenshotpath = captureScreenshot("skipTest.jpg");
 			extentTest.skip(m.getName() + " has skipped");
 			extentTest.log(Status.SKIP, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(screenshotpath).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName() + ".jpg")).build());
 
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
 
@@ -267,5 +276,18 @@ public class BaseTest {
 			throw new UnableSaveSnapshotException(e);
 		}
 	}
+
+//	public void handleAlert() {
+//		 try {
+//	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+//	            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@name='survey-iframe-SI_8oGUCi9NKXHrsCG']")));
+//	          WebElement closeButton= driver.findElement(By.xpath("//img[@src='https://siteintercept.qualtrics.com/static/q-siteintercept/~/img/bwc_close.png']"));
+//	          closeButton.click();
+//	          System.out.println("Unexpected alert DISMISSED");
+//	        } catch (Exception e) {
+//	            System.out.println("unexpected alert not present");
+//	        }	
+//		
+//	}
 
 }
