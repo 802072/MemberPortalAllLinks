@@ -17,16 +17,8 @@ public class VNSHealthTotal extends BaseTest {
 	dataDriven d = new dataDriven();
 
 	@BeforeSuite
-	public void initialiseExtentReports() {
-		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationTotal.html");
-		sparkReporter_all.config().setReportName("Member Portal: VNS Health Total Plan Automation Report");
-
-		extentReports = new ExtentReports();
-		extentReports.attachReporter(sparkReporter_all);
-
-		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
-		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-		extentReports.setSystemInfo("Environment", "Test Environment");
+	public void initializeReport() {
+	initialiseExtentReports("MemberPortalAutomationTotal.html", "Member Portal: VNS Health Total Plan Automation Report");
 	}
 
 	public void loginTotal() throws IOException, InterruptedException {

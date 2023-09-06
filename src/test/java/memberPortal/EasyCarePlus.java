@@ -17,17 +17,8 @@ public class EasyCarePlus extends BaseTest {
 	dataDriven d = new dataDriven();
 
 	@BeforeSuite
-	public void initialiseExtentReports() {
-		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationEasyCarePlus.html");
-		sparkReporter_all.config().setReportName("Member Portal: Easy Care Plus Plan Automation Report");
-
-		extentReports = new ExtentReports();
-		extentReports.attachReporter(sparkReporter_all);
-
-		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
-		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-		extentReports.setSystemInfo("Environment", "Test Environment");
-
+	public void initializeReport() {
+	initialiseExtentReports("MemberPortalAutomationEasyCarePlus.html", "Member Portal: Easy Care Plus Plan Automation Report");
 	}
 
 	public void loginECPlus() throws IOException, InterruptedException {

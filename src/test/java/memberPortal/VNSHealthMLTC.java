@@ -18,16 +18,8 @@ public class VNSHealthMLTC extends BaseTest {
 	dataDriven d = new dataDriven();
 
 	@BeforeSuite
-	public void initialiseExtentReports() {
-		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationMLTC.html");
-		sparkReporter_all.config().setReportName("Member Portal: VNS Health MLTC Plan Automation Report");
-
-		extentReports = new ExtentReports();
-		extentReports.attachReporter(sparkReporter_all);
-
-		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
-		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-		extentReports.setSystemInfo("Environment", "Test Environment");
+	public void initializeReport() {
+	initialiseExtentReports("MemberPortalAutomationMLTC.html", "Member Portal: VNS Health MLTC Plan Automation Report");
 	}
 
 	public void loginMLTC() throws IOException, InterruptedException {

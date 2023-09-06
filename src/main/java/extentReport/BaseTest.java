@@ -33,6 +33,9 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
 import dataDriven.dataDriven;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -52,6 +55,28 @@ public class BaseTest {
 	Date date = new Date();
 	String fileDate = date.toString().replace(":", "_").replace(" ", "_");
 
+	public void initialiseExtentReports(String reportName, String reportTitle) {
+		//ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationEasyCare.html");
+		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter(reportName);
+		sparkReporter_all.config().setReportName(reportTitle);
+		sparkReporter_all.config().setTheme(Theme.STANDARD);
+
+//		//Failed Report
+//		ExtentSparkReporter sparkReporter_failed = new ExtentSparkReporter("FailedTestsEC.html");
+//		sparkReporter_failed.filter().statusFilter().as(new Status[] {Status.FAIL}).apply();
+//		sparkReporter_failed.config().setReportName("Failure Report");
+//
+//		extentReports = new ExtentReports();
+//		extentReports.attachReporter(sparkReporter_all, sparkReporter_failed);
+		
+		extentReports = new ExtentReports();
+		extentReports.attachReporter(sparkReporter_all);
+		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
+		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
+		extentReports.setSystemInfo("Environment", "Test Environment");
+
+	}
+	
 	@Parameters("browserName")
 	@BeforeTest
 	public void setup(ITestContext context, @Optional("chrome") String browserName)
@@ -184,20 +209,21 @@ public class BaseTest {
 	@AfterMethod
 	public void checkStatus(Method m, ITestResult result) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
-
-			String screenshotpath = null;
-			screenshotpath = captureScreenshot("failTest.jpg");
+//
+//			String screenshotpath = null;
+//			screenshotpath = captureScreenshot("failTest.jpg");
 			extentTest.fail(m.getName() + " has failed");
 			extentTest.log(Status.FAIL, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName() + ".jpg")).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName()+fileDate + ".jpg")).build());
 		}
 		if (result.getStatus() == ITestResult.SKIP) {
-
-			String screenshotpath = null;
-			screenshotpath = captureScreenshot("skipTest.jpg");
+//
+//			String screenshotpath = null;
+//			screenshotpath = captureScreenshot("skipTest.jpg");
 			extentTest.skip(m.getName() + " has skipped");
 			extentTest.log(Status.SKIP, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName() + ".jpg")).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName() + fileDate + ".jpg"))
+							.build());
 
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
 
