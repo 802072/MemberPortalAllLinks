@@ -40,6 +40,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.Date;
 
 public class BaseTest {
 	public static WebDriver driver;
@@ -48,6 +49,8 @@ public class BaseTest {
 	public static ExtentTest extentTest;
 	public static ExtentTest testStepExtentTest;
 	dataDriven d = new dataDriven();
+	Date date = new Date();
+	String fileDate = date.toString().replace(":", "_").replace(" ", "_");
 
 	@Parameters("browserName")
 	@BeforeTest
@@ -89,8 +92,8 @@ public class BaseTest {
 		String loginPage = (String) TS01.get(6);
 		driver.get(loginPage);
 		Thread.sleep(6000);
-		extentTest.log(Status.PASS, "Get Login Page. URL is " + loginPage,
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("Loginpage" + ".jpg")).build());
+		extentTest.log(Status.PASS, "Get Login Page. URL is " + loginPage, MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("Loginpage" + fileDate + ".jpg")).build());
 
 		// enter username
 		ArrayList TS02 = d.getData("LI02", "loginSteps");
@@ -127,78 +130,20 @@ public class BaseTest {
 		WebElement signOn1 = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn1.click();
 		Thread.sleep(5000);
-		//handleAlert();
+		// handleAlert();
 	}
 
-//	public void loginMLTC() throws IOException, InterruptedException {
-//		ArrayList V80209467 = d.getData("V80209467", "loginCred");
-//		String uname = (String) V80209467.get(1);
-//		String pswd = (String) V80209467.get(2);
-//		String hPlan = (String) V80209467.get(5);
-//		login(uname, pswd, hPlan);
-//	}
-
-//	public void loginTotal() throws IOException, InterruptedException {
-//		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-//		String uname = (String) V70069794.get(1);
-//		String pswd = (String) V70069794.get(2);
-//		String hPlan = (String) V70069794.get(5);
-//		login(uname, pswd, hPlan);
-//	}
-
-//	public void loginECPlus() throws IOException, InterruptedException {
-//		ArrayList V70065532 = d.getData("V70065532", "loginCred");
-//		String uname = (String) V70065532.get(1);
-//		String pswd = (String) V70065532.get(2);
-//		String hPlan = (String) V70065532.get(5);
-//		login(uname, pswd, hPlan);
-//	}
-
-//	public void loginSelectHealth() throws IOException, InterruptedException {
-//		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-//		String uname = (String) V80041737.get(1);
-//		String pswd = (String) V80041737.get(2);
-//		String hPlan = (String) V80041737.get(5);
-//		login(uname, pswd, hPlan);
-//	}
-
-//	public void loginEasyCare() throws IOException, InterruptedException {
-//		ArrayList V70040578 = d.getData("V70040578", "loginCred");
-//		String uname = (String) V70040578.get(1);
-//		String pswd = (String) V70040578.get(2);
-//		String hPlan = (String) V70040578.get(5);
-//		login(uname, pswd, hPlan);
-//	}
-
-//	@BeforeSuite
-//	public void initialiseExtentReports() {
-//		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomation.html");
-//		sparkReporter_all.config().setReportName("Member Portal Automation Report");
-//		// Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
-//
-//		extentReports = new ExtentReports();
-//		extentReports.attachReporter(sparkReporter_all);
-//
-//		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
-//		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-//		extentReports.setSystemInfo("Environment", "Test Environment");
-//		// extentReports.setSystemInfo("Browser Name", cap.getBrowserName()+ "
-//		// "+cap.getVersion());
-//		// extentReports.setSystemInfo("Environment", "Production Environment");
-//		// excelWR.createSheet();
-//	}
-
-	public void clickElement(String rowName, String sheetName, String hPlan) throws IOException, InterruptedException {
+	public void clickElement(String rowName, String sheetName) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		element.click();
 		Thread.sleep(6000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(hPlan+rowName + ".jpg")).build());
-		//handleAlert();
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+		// handleAlert();
 	}
 
-	public void clickElementChildWindow(String rowName, String sheetName, String hPlan) throws IOException, InterruptedException {
+	public void clickElementChildWindow(String rowName, String sheetName) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
@@ -210,22 +155,22 @@ public class BaseTest {
 
 		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(hPlan+rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
-		//handleAlert();
+		// handleAlert();
 	}
 
-	public void clickElementJSExecute(String rowName, String sheetName, String hPlan) throws IOException, InterruptedException {
+	public void clickElementJSExecute(String rowName, String sheetName) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		// element.click();
 		Thread.sleep(3000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(hPlan+rowName + ".jpg")).build());
-		//handleAlert();
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+		// handleAlert();
 	}
 
 	@AfterSuite
@@ -276,18 +221,5 @@ public class BaseTest {
 			throw new UnableSaveSnapshotException(e);
 		}
 	}
-
-//	public void handleAlert() {
-//		 try {
-//	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-//	            wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//iframe[@name='survey-iframe-SI_8oGUCi9NKXHrsCG']")));
-//	          WebElement closeButton= driver.findElement(By.xpath("//img[@src='https://siteintercept.qualtrics.com/static/q-siteintercept/~/img/bwc_close.png']"));
-//	          closeButton.click();
-//	          System.out.println("Unexpected alert DISMISSED");
-//	        } catch (Exception e) {
-//	            System.out.println("unexpected alert not present");
-//	        }	
-//		
-//	}
 
 }

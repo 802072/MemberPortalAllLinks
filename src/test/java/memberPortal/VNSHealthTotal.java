@@ -33,8 +33,8 @@ public class VNSHealthTotal extends BaseTest {
 		ArrayList V70069794 = d.getData("V70069794", "loginCred");
 		String uname = (String) V70069794.get(1);
 		String pswd = (String) V70069794.get(2);
-		String hPlan = (String) V70069794.get(5);
-		login(uname, pswd, hPlan);
+		String healthPlan = (String) V70069794.get(5);
+		login(uname, pswd, healthPlan);
 	}
 
 	// Homepage
@@ -45,39 +45,39 @@ public class VNSHealthTotal extends BaseTest {
 		loginTotal();
 		Thread.sleep(3000);
 		// Click Name
-		clickElement("HP0101", "homePage", hPlan);
+		clickElement("HP0101", "homePage");
 		driver.navigate().back();
 		// Click View And Print ID Card
-		clickElement("HP0102", "homePage", hPlan);
+		clickElement("HP0102", "homePage");
 		driver.navigate().back();
 		// Click Check My Benefits
-		clickElementJSExecute("HP0103", "homePage", hPlan);
+		clickElementJSExecute("HP0103", "homePage");
 		driver.navigate().back();
 		// Click View My Care Team
-		clickElementJSExecute("HP0104", "homePage", hPlan);
+		clickElementJSExecute("HP0104", "homePage");
 		driver.navigate().back();
 		// Click Review My Medical Supplies
-		clickElementJSExecute("HP0105", "homePage", hPlan);
+		clickElementJSExecute("HP0105", "homePage");
 		driver.navigate().back();
 		// Click My Action Items
-		clickElementJSExecute("HP0106", "homePage", hPlan);
+		clickElementJSExecute("HP0106", "homePage");
 		driver.navigate().back();
 		// Click View Claims
-		clickElementJSExecute("HP0107", "homePage", hPlan);
+		clickElementJSExecute("HP0107", "homePage");
 		driver.navigate().back();
 		// Click View Service Authorizations
-		clickElementJSExecute("HP0108", "homePage", hPlan);
+		clickElementJSExecute("HP0108", "homePage");
 		driver.navigate().back();
 		// Click Rewards Link
-		clickElementJSExecute("HP0112", "homePage", hPlan);
+		clickElementJSExecute("HP0112", "homePage");
 		driver.navigate().back();
 		// Click Technical Support Link
-		clickElement("HP0109", "homePage", hPlan);
+		clickElement("HP0109", "homePage");
 		driver.navigate().back();
 		// Click Terms of Use Link
-		clickElementChildWindow("HP0110", "homePage", hPlan);
+		clickElementChildWindow("HP0110", "homePage");
 		// Click Privacy Policy Link
-		clickElementChildWindow("HP0111", "homePage", hPlan);
+		clickElementChildWindow("HP0111", "homePage");
 	}
 
 	// Benefits
@@ -87,31 +87,31 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits
-		clickElement("BE0101", "benefitsMenu", hPlan);
+		clickElement("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
-		clickElement("BE0102", "benefitsMenu", hPlan);
+		clickElement("BE0102", "benefitsMenu");
 		// Click View Summary of Benefits Link
-		clickElementChildWindow("BE0108", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0108", "benefitsMenu");
 		// Click View Evidence of Coverage Link
-		clickElementChildWindow("BE0109", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0109", "benefitsMenu");
 		// Click MedImpact Link
-		clickElementChildWindow("BE0110", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0110", "benefitsMenu");
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("BE0111", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0111", "benefitsMenu");
 		// Click Flex Card Link
-		clickElementChildWindow("BE0112", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0112", "benefitsMenu");
 		// Click Rewards Link
-		clickElementChildWindow("BE0113", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0113", "benefitsMenu");
 		// Click Carelon Link
-		clickElementChildWindow("BE0114", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0114", "benefitsMenu");
 		// Click Healthplex
-		clickElementChildWindow("BE0105", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0105", "benefitsMenu");
 		// Click Superior Vision
-		clickElementChildWindow("BE0106", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0106", "benefitsMenu");
 		// Click Click Modivcare
-		clickElementChildWindow("BE0107", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0107", "benefitsMenu");
 		// Click SilverSneakers Link
-		clickElementChildWindow("BE0115", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0115", "benefitsMenu");
 	}
 
 	// Pharmacy and Prescriptions
@@ -121,17 +121,17 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits Menu
-		clickElement("BE0201", "benefitsMenu", hPlan);
+		clickElement("BE0201", "benefitsMenu");
 		// Click Pharmacy And Prescriptions Sub-menu
-		clickElement("BE0202", "benefitsMenu", hPlan);
+		clickElement("BE0202", "benefitsMenu");
 		// Click Go to MedImpact Link
-		clickElementChildWindow("BE0203", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0203", "benefitsMenu");
 		// Click Find a Medication Link
-		clickElementChildWindow("BE0204", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0204", "benefitsMenu");
 		// Click MedImpact Link
-		clickElementChildWindow("BE0205", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0205", "benefitsMenu");
 		// Click Formulary Link
-		clickElementChildWindow("BE0206", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0206", "benefitsMenu");
 
 	}
 
@@ -142,15 +142,15 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits
-		clickElement("BE0301", "benefitsMenu", hPlan);
+		clickElement("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
-		clickElement("BE0302", "benefitsMenu", hPlan);
+		clickElement("BE0302", "benefitsMenu");
 		Thread.sleep(5000);
 		// Click Communication Center
-		clickElement("BE0303", "benefitsMenu", hPlan);
+		clickElement("BE0303", "benefitsMenu");
 		driver.navigate().back();
 		// Click Return to Home
-		clickElement("BE0304", "benefitsMenu", hPlan);
+		clickElement("BE0304", "benefitsMenu");
 
 	}
 
@@ -161,15 +161,15 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits Menu
-		clickElement("BE0401", "benefitsMenu", hPlan);
+		clickElement("BE0401", "benefitsMenu");
 		// Click OTC Benefits Sub-menu
-		clickElement("BE0402", "benefitsMenu", hPlan);
+		clickElement("BE0402", "benefitsMenu");
 		// Click Go To Portal Link
-		clickElementChildWindow("BE0403", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0403", "benefitsMenu");
 		// Click Learn About OTC & Grocery Benefits Link
-		clickElementChildWindow("BE0404", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0404", "benefitsMenu");
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("BE0405", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0405", "benefitsMenu");
 	}
 
 	// Flex Card
@@ -179,13 +179,13 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits Menu
-		clickElement("BE0501", "benefitsMenu", hPlan);
+		clickElement("BE0501", "benefitsMenu");
 		// Click Flex Card Sub-menu
-		clickElement("BE0502", "benefitsMenu", hPlan);
+		clickElement("BE0502", "benefitsMenu");
 		// Click Watch Video Link
-		clickElementChildWindow("BE0503", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0503", "benefitsMenu");
 		// Click Flex Card Link
-		clickElementChildWindow("BE0504", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0504", "benefitsMenu");
 	}
 
 	// Rewards
@@ -195,11 +195,11 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits
-		clickElement("BE0601", "benefitsMenu", hPlan);
+		clickElement("BE0601", "benefitsMenu");
 		// Click Rewards Sub-menu
-		clickElement("BE0602", "benefitsMenu", hPlan);
+		clickElement("BE0602", "benefitsMenu");
 		// Click Learn About Rewards Link
-		clickElementChildWindow("BE0603", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0603", "benefitsMenu");
 	}
 
 	// Plan History
@@ -209,9 +209,9 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Benefits
-		clickElement("BE0701", "benefitsMenu", hPlan);
+		clickElement("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
-		clickElement("BE0702", "benefitsMenu", hPlan);
+		clickElement("BE0702", "benefitsMenu");
 	}
 
 	// My Care
@@ -222,13 +222,13 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click My Care Menu
-		clickElement("MC0101", "myCareMenu", hPlan);
+		clickElement("MC0101", "myCareMenu");
 		// Click My PCP Sub-menu
-		clickElement("MC0102", "myCareMenu", hPlan);
+		clickElement("MC0102", "myCareMenu");
 		// Click Provider Directory Link
-		clickElementChildWindow("MC0103", "myCareMenu", hPlan);
+		clickElementChildWindow("MC0103", "myCareMenu");
 		// Click Request a PCP Change Link
-		clickElement("MC0104", "myCareMenu", hPlan);
+		clickElement("MC0104", "myCareMenu");
 	}
 
 	// myHealthPlanCareTeam
@@ -238,11 +238,11 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click My Care Menu
-		clickElement("MC0201", "myCareMenu", hPlan);
+		clickElement("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
-		clickElement("MC0202", "myCareMenu", hPlan);
+		clickElement("MC0202", "myCareMenu");
 		// Click Communication Center
-		clickElementChildWindow("MC0203", "myCareMenu", hPlan);
+		clickElementChildWindow("MC0203", "myCareMenu");
 
 	}
 
@@ -253,9 +253,9 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click My Care Menu
-		clickElement("MC0301", "myCareMenu", hPlan);
+		clickElement("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
-		clickElement("MC0302", "myCareMenu", hPlan);
+		clickElement("MC0302", "myCareMenu");
 	}
 
 	// My Medical Supplies and Equipment
@@ -265,9 +265,9 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click My Care Menu
-		clickElement("MC0401", "myCareMenu", hPlan);
+		clickElement("MC0401", "myCareMenu");
 		// Click My Medical Supp Sub-menu
-		clickElement("MC0402", "myCareMenu", hPlan);
+		clickElement("MC0402", "myCareMenu");
 	}
 
 	// Claims
@@ -278,11 +278,11 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Claims Menu
-		clickElement("CL0101", "claimsMenu", hPlan);
+		clickElement("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
-		clickElement("CL0102", "claimsMenu", hPlan);
+		clickElement("CL0102", "claimsMenu");
 		// Click Submit Reimbursement Request Link
-		clickElementJSExecute("CL0103", "claimsMenu", hPlan);
+		clickElementJSExecute("CL0103", "claimsMenu");
 	}
 
 	// Resources
@@ -293,30 +293,30 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Resources Menu
-		clickElement("RE0101", "resourcesMenu", hPlan);
+		clickElement("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
-		clickElement("RE0102", "resourcesMenu", hPlan);
+		clickElement("RE0102", "resourcesMenu");
 		// Click View All Resources Link
-		clickElementChildWindow("RE0103", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0103", "resourcesMenu");
 
 		// Click Member Rewards Program Link
-		clickElementChildWindow("RE0108", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0108", "resourcesMenu");
 		// Click Flex Card Link
-		clickElementChildWindow("RE0109", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0109", "resourcesMenu");
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("RE0110", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0110", "resourcesMenu");
 		// Click Transportation Link
-		clickElementChildWindow("RE0104", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0104", "resourcesMenu");
 		// Click Drug benefits and Resources Link
-		clickElementChildWindow("RE0111", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0111", "resourcesMenu");
 		// Click Medication Therapy Management Program Link
-		clickElementChildWindow("RE0112", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0112", "resourcesMenu");
 		// Click 2023 Plan Materials Link
-		clickElementChildWindow("RE0113", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0113", "resourcesMenu");
 		// Click Forms and Personal Health Materials Link
-		clickElementChildWindow("RE0114", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0114", "resourcesMenu");
 		// Click Frequently Asked Questions Link
-		clickElementChildWindow("RE0107", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0107", "resourcesMenu");
 	}
 
 	// Benefit Partners
@@ -326,27 +326,27 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Resources Menu
-		clickElement("RE0201", "resourcesMenu", hPlan);
+		clickElement("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
-		clickElement("RE0202", "resourcesMenu", hPlan);
+		clickElement("RE0202", "resourcesMenu");
 		// Click MedImpact Link
-		clickElementChildWindow("RE0206", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0206", "resourcesMenu");
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("RE0207", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0207", "resourcesMenu");
 		// Click Flex Card Link
-		clickElementChildWindow("RE0208", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0208", "resourcesMenu");
 		// Click Rewards Link
-		clickElementChildWindow("RE0209", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0209", "resourcesMenu");
 		// Click Carelon Link
-		clickElementChildWindow("RE0210", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0210", "resourcesMenu");
 		// Click Healthplex
-		clickElementChildWindow("RE0203", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0203", "resourcesMenu");
 		// Click Superior Vision
-		clickElementChildWindow("RE0204", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0204", "resourcesMenu");
 		// Click Click Modivcare
-		clickElementChildWindow("RE0205", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0205", "resourcesMenu");
 		// Click SilverSneakers Link
-		clickElementChildWindow("RE0211", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0211", "resourcesMenu");
 	}
 
 	// Grievances and Appeals
@@ -357,11 +357,11 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0101", "grievancesMenu", hPlan);
+		clickElement("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0102", "grievancesMenu", hPlan);
+		clickElement("GA0102", "grievancesMenu");
 		// Click Learn About Complaints
-		clickElementChildWindow("GA0103", "grievancesMenu", hPlan);
+		clickElementChildWindow("GA0103", "grievancesMenu");
 	}
 
 	// Appeals
@@ -371,11 +371,11 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0201", "grievancesMenu", hPlan);
+		clickElement("GA0201", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0202", "grievancesMenu", hPlan);
+		clickElement("GA0202", "grievancesMenu");
 		// Click Learn About Appeals
-		clickElementChildWindow("GA0203", "grievancesMenu", hPlan);
+		clickElementChildWindow("GA0203", "grievancesMenu");
 	}
 
 	// Communication Center
@@ -385,15 +385,15 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click Communication Center Menu
-		clickElement("CC0101", "comCenterMenu", hPlan);
+		clickElement("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
-		clickElement("CC0102", "comCenterMenu", hPlan);
+		clickElement("CC0102", "comCenterMenu");
 		// Click Learn About Complaints
-		clickElementJSExecute("CC0103", "comCenterMenu", hPlan);
+		clickElementJSExecute("CC0103", "comCenterMenu");
 
 		driver.navigate().back();
 		// Click Send a Message
-		clickElement("CC0104", "comCenterMenu", hPlan);
+		clickElement("CC0104", "comCenterMenu");
 	}
 
 	// My Account
@@ -403,15 +403,15 @@ public class VNSHealthTotal extends BaseTest {
 		String hPlan = (String) V70069794.get(5);
 		loginTotal();
 		// Click My Account Menu
-		clickElement("MA0101", "myAccountMenu", hPlan);
+		clickElement("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
-		clickElement("MA0102", "myAccountMenu", hPlan);
+		clickElement("MA0102", "myAccountMenu");
 		// Click Request Change
-		clickElement("MA0103", "myAccountMenu", hPlan);
+		clickElement("MA0103", "myAccountMenu");
 		// Click Cancel
-		clickElement("MA0104", "myAccountMenu", hPlan);
+		clickElement("MA0104", "myAccountMenu");
 		// Click Change Password
-		clickElement("MA0105", "myAccountMenu", hPlan);
+		clickElement("MA0105", "myAccountMenu");
 
 	}
 

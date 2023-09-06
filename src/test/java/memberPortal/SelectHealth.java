@@ -31,11 +31,11 @@ public class SelectHealth extends BaseTest {
 
 	public void loginSelectHealth() throws IOException, InterruptedException {
 		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+		String healthPlan = (String) V80041737.get(5);
 		String uname = (String) V80041737.get(1);
 		String pswd = (String) V80041737.get(2);
 
-		login(uname, pswd, hPlan);
+		login(uname, pswd, healthPlan);
 	}
 
 	// Homepage
@@ -46,39 +46,39 @@ public class SelectHealth extends BaseTest {
 		loginSelectHealth();
 		Thread.sleep(3000);
 		// Click Name
-		clickElement("HP0101", "homePage", hPlan);
+		clickElement("HP0101", "homePage");
 		driver.navigate().back();
 		// Click View And Print ID Card
-		clickElement("HP0102", "homePage", hPlan);
+		clickElement("HP0102", "homePage");
 		driver.navigate().back();
 		// Click Check My Benefits
-		clickElementJSExecute("HP0103", "homePage", hPlan);
+		clickElementJSExecute("HP0103", "homePage");
 		driver.navigate().back();
 		// Click View My Care Team
-		clickElementJSExecute("HP0104", "homePage", hPlan);
+		clickElementJSExecute("HP0104", "homePage");
 		driver.navigate().back();
 		// Click Review My Medical Supplies
-		clickElementJSExecute("HP0105", "homePage", hPlan);
+		clickElementJSExecute("HP0105", "homePage");
 		driver.navigate().back();
 		// Click My Action Items
-		clickElementJSExecute("HP0106", "homePage", hPlan);
+		clickElementJSExecute("HP0106", "homePage");
 		driver.navigate().back();
 		// Click View Claims
-		clickElementJSExecute("HP0107", "homePage", hPlan);
+		clickElementJSExecute("HP0107", "homePage");
 		driver.navigate().back();
 		// Click View Service Authorizations
-		clickElementJSExecute("HP0108", "homePage", hPlan);
+		clickElementJSExecute("HP0108", "homePage");
 		driver.navigate().back();
 		// Click Rewards Link
-		clickElementJSExecute("HP0112", "homePage", hPlan);
+		clickElementJSExecute("HP0112", "homePage");
 		driver.navigate().back();
 		// Click Technical Support Link
-		clickElement("HP0109", "homePage", hPlan);
+		clickElement("HP0109", "homePage");
 		driver.navigate().back();
 		// Click Terms of Use Link
-		clickElementChildWindow("HP0110", "homePage", hPlan);
+		clickElementChildWindow("HP0110", "homePage");
 		// Click Privacy Policy Link
-		clickElementChildWindow("HP0111", "homePage", hPlan);
+		clickElementChildWindow("HP0111", "homePage");
 
 	}
 
@@ -89,19 +89,19 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Benefits
-		clickElement("BE0101", "benefitsMenu", hPlan);
+		clickElement("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
-		clickElement("BE0102", "benefitsMenu", hPlan);
+		clickElement("BE0102", "benefitsMenu");
 
 		// Click Member Handbook Link (this page)
-		clickElementChildWindow("BE0116", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0116", "benefitsMenu");
 
 		// Click Carelon Link
-		clickElementChildWindow("BE0114", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0114", "benefitsMenu");
 		// Click Healthplex
-		clickElementChildWindow("BE0105", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0105", "benefitsMenu");
 		// Click Superior Vision
-		clickElementChildWindow("BE0106", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0106", "benefitsMenu");
 	}
 
 	// ID Card
@@ -111,15 +111,15 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Benefits
-		clickElement("BE0301", "benefitsMenu", hPlan);
+		clickElement("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
-		clickElement("BE0302", "benefitsMenu", hPlan);
+		clickElement("BE0302", "benefitsMenu");
 		Thread.sleep(5000);
 		// Click Communication Center
-		clickElement("BE0303", "benefitsMenu", hPlan);
+		clickElement("BE0303", "benefitsMenu");
 		driver.navigate().back();
 		// Click Return to Home
-		clickElement("BE0304", "benefitsMenu", hPlan);
+		clickElement("BE0304", "benefitsMenu");
 
 	}
 
@@ -130,12 +130,12 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Benefits
-		clickElement("BE0601", "benefitsMenu", hPlan);
+		clickElement("BE0601", "benefitsMenu");
 		// Click Rewards Sub-menu
-		clickElement("BE0602", "benefitsMenu", hPlan);
+		clickElement("BE0602", "benefitsMenu");
 
 		// Click Download Brochure Link
-		clickElementChildWindow("BE0604", "benefitsMenu", hPlan);
+		clickElementChildWindow("BE0604", "benefitsMenu");
 	}
 
 	// Plan History
@@ -145,9 +145,9 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Benefits
-		clickElement("BE0701", "benefitsMenu", hPlan);
+		clickElement("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
-		clickElement("BE0702", "benefitsMenu", hPlan);
+		clickElement("BE0702", "benefitsMenu");
 	}
 
 	// My Care
@@ -158,13 +158,13 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click My Care Menu
-		clickElement("MC0101", "myCareMenu", hPlan);
+		clickElement("MC0101", "myCareMenu");
 		// Click My PCP Sub-menu
-		clickElement("MC0102", "myCareMenu", hPlan);
+		clickElement("MC0102", "myCareMenu");
 		// Click Provider Directory Link
-		clickElementChildWindow("MC0103", "myCareMenu", hPlan);
+		clickElementChildWindow("MC0103", "myCareMenu");
 		// Click Request a PCP Change Link
-		clickElementJSExecute("MC0104", "myCareMenu", hPlan);
+		clickElementJSExecute("MC0104", "myCareMenu");
 	}
 
 	// myHealthPlanCareTeam
@@ -174,11 +174,11 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click My Care Menu
-		clickElement("MC0201", "myCareMenu", hPlan);
+		clickElement("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
-		clickElement("MC0202", "myCareMenu", hPlan);
+		clickElement("MC0202", "myCareMenu");
 		// Click Communication Center
-		clickElementChildWindow("MC0203", "myCareMenu", hPlan);
+		clickElementChildWindow("MC0203", "myCareMenu");
 
 	}
 
@@ -189,9 +189,9 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click My Care Menu
-		clickElement("MC0301", "myCareMenu", hPlan);
+		clickElement("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
-		clickElement("MC0302", "myCareMenu", hPlan);
+		clickElement("MC0302", "myCareMenu");
 	}
 
 	// My Medical Supplies and Equipment
@@ -201,9 +201,9 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click My Care Menu
-		clickElement("MC0401", "myCareMenu", hPlan);
+		clickElement("MC0401", "myCareMenu");
 		// Click My Medica Supp Sub-menu
-		clickElement("MC0402", "myCareMenu", hPlan);
+		clickElement("MC0402", "myCareMenu");
 	}
 
 	// Claims
@@ -214,11 +214,11 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Claims Menu
-		clickElement("CL0101", "claimsMenu", hPlan);
+		clickElement("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
-		clickElement("CL0102", "claimsMenu", hPlan);
+		clickElement("CL0102", "claimsMenu");
 		// Click Submit Reimbursement Request Link
-		clickElementJSExecute("CL0103", "claimsMenu", hPlan);
+		clickElementJSExecute("CL0103", "claimsMenu");
 	}
 
 	// Resources
@@ -229,22 +229,22 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Resources Menu
-		clickElement("RE0101", "resourcesMenu", hPlan);
+		clickElement("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
-		clickElement("RE0102", "resourcesMenu", hPlan);
+		clickElement("RE0102", "resourcesMenu");
 
 		// Click Transgender Health Services Link
-		clickElementChildWindow("RE0115", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0115", "resourcesMenu");
 		// Click HIV Resources Link
-		clickElementChildWindow("RE0116", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0116", "resourcesMenu");
 		// Click Reources for Homeless Individuals Link
-		clickElementChildWindow("RE0117", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0117", "resourcesMenu");
 		// Click Home & Community-Based Services Link
-		clickElementChildWindow("RE0118", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0118", "resourcesMenu");
 		// Click Provider Search Link
-		clickElementChildWindow("RE0119", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0119", "resourcesMenu");
 		// Click Member Forms & Materials Link
-		clickElementChildWindow("RE0120", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0120", "resourcesMenu");
 
 	}
 
@@ -255,16 +255,16 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Resources Menu
-		clickElement("RE0201", "resourcesMenu", hPlan);
+		clickElement("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
-		clickElement("RE0202", "resourcesMenu", hPlan);
+		clickElement("RE0202", "resourcesMenu");
 
 		// Click Carelon Link
-		clickElementChildWindow("RE0210", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0210", "resourcesMenu");
 		// Click Healthplex
-		clickElementChildWindow("RE0203", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0203", "resourcesMenu");
 		// Click Superior Vision
-		clickElementChildWindow("RE0204", "resourcesMenu", hPlan);
+		clickElementChildWindow("RE0204", "resourcesMenu");
 	}
 
 	// Grievances and Appeals
@@ -275,11 +275,11 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0101", "grievancesMenu", hPlan);
+		clickElement("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0102", "grievancesMenu", hPlan);
+		clickElement("GA0102", "grievancesMenu");
 		// Click Learn About Complaints
-		clickElementChildWindow("GA0103", "grievancesMenu", hPlan);
+		clickElementChildWindow("GA0103", "grievancesMenu");
 	}
 
 	// Appeals
@@ -289,11 +289,11 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0201", "grievancesMenu", hPlan);
+		clickElement("GA0201", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0202", "grievancesMenu", hPlan);
+		clickElement("GA0202", "grievancesMenu");
 		// Click Learn About Appeals
-		clickElementChildWindow("GA0203", "grievancesMenu", hPlan);
+		clickElementChildWindow("GA0203", "grievancesMenu");
 	}
 
 	// Communication Center
@@ -303,15 +303,15 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click Communication Center Menu
-		clickElement("CC0101", "comCenterMenu", hPlan);
+		clickElement("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
-		clickElement("CC0102", "comCenterMenu", hPlan);
+		clickElement("CC0102", "comCenterMenu");
 		// Click Learn About Complaints
-		clickElementJSExecute("CC0103", "comCenterMenu", hPlan);
+		clickElementJSExecute("CC0103", "comCenterMenu");
 
 		driver.navigate().back();
 		// Click Send a Message
-		clickElement("CC0104", "comCenterMenu", hPlan);
+		clickElement("CC0104", "comCenterMenu");
 	}
 
 	// My Account
@@ -321,15 +321,15 @@ public class SelectHealth extends BaseTest {
 		String hPlan = (String) V80041737.get(5);
 		loginSelectHealth();
 		// Click My Account Menu
-		clickElement("MA0101", "myAccountMenu", hPlan);
+		clickElement("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
-		clickElement("MA0102", "myAccountMenu", hPlan);
+		clickElement("MA0102", "myAccountMenu");
 		// Click Request Change
-		clickElement("MA0103", "myAccountMenu", hPlan);
+		clickElement("MA0103", "myAccountMenu");
 		// Click Cancel
-		clickElement("MA0104", "myAccountMenu", hPlan);
+		clickElement("MA0104", "myAccountMenu");
 		// Click Change Password
-		clickElement("MA0105", "myAccountMenu", hPlan);
+		clickElement("MA0105", "myAccountMenu");
 
 	}
 
