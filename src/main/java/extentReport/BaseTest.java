@@ -100,7 +100,7 @@ public class BaseTest {
 		WebElement uname = driver.findElement(By.xpath((String) TS02.get(5)));
 		uname.sendKeys(username);
 		extentTest.log(Status.PASS, "Enter Username: " + username + ", Health Plan: " + healthPlan,
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("username" + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("username" +fileDate+ ".jpg")).build());
 
 		// enter password
 		ArrayList TS03 = d.getData("LI03", "loginSteps");
@@ -108,25 +108,25 @@ public class BaseTest {
 		pwd.sendKeys(password);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		extentTest.log(Status.PASS, "Enter Password",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("password" + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("password"+fileDate + ".jpg")).build());
 
 		// login
 		ArrayList TS04 = d.getData("LI04", "loginSteps");
 		WebElement signOn = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn.click();
 		extentTest.log(Status.PASS, "Click Sign On",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("signon" + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("signon" +fileDate+ ".jpg")).build());
 
 		// enter password
 		WebElement pwd1 = driver.findElement(By.xpath((String) TS03.get(5)));
 		pwd1.sendKeys(password);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		extentTest.log(Status.PASS, "Enter Password",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("password1" + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("password1" +fileDate+ ".jpg")).build());
 
 		// login
 		extentTest.log(Status.PASS, "Click Sign On",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("signon1" + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("signon1" +fileDate+ ".jpg")).build());
 		WebElement signOn1 = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn1.click();
 		Thread.sleep(5000);
@@ -139,7 +139,7 @@ public class BaseTest {
 		element.click();
 		Thread.sleep(6000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +fileDate+ ".jpg")).build());
 		// handleAlert();
 	}
 
@@ -155,7 +155,7 @@ public class BaseTest {
 
 		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +fileDate+ ".jpg")).build());
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
@@ -169,7 +169,7 @@ public class BaseTest {
 		// element.click();
 		Thread.sleep(3000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +fileDate+ ".jpg")).build());
 		// handleAlert();
 	}
 

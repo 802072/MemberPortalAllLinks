@@ -40,8 +40,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Homepage
 	@Test(groups = "Homepage")
 	public void homePage() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		Thread.sleep(3000);
 		// Click Name
@@ -83,8 +82,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Benefits
 	@Test(groups = "Benefits", priority = 1)
 	public void benefits() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits
 		clickElement("BE0101", "benefitsMenu");
@@ -117,8 +115,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Pharmacy and Prescriptions
 	@Test(groups = "Benefits")
 	public void pharmacyAndPrescp() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits Menu
 		clickElement("BE0201", "benefitsMenu");
@@ -138,8 +135,7 @@ public class VNSHealthTotal extends BaseTest {
 	// ID Card
 	@Test(groups = "Benefits")
 	public void idCard() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits
 		clickElement("BE0301", "benefitsMenu");
@@ -157,8 +153,7 @@ public class VNSHealthTotal extends BaseTest {
 	// OTC Benefits
 	@Test(groups = "Benefits")
 	public void otcBenefits() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits Menu
 		clickElement("BE0401", "benefitsMenu");
@@ -175,8 +170,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Flex Card
 	@Test(groups = "Benefits")
 	public void flexCard() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits Menu
 		clickElement("BE0501", "benefitsMenu");
@@ -191,8 +185,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Rewards
 	@Test(groups = "Benefits")
 	public void rewards() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits
 		clickElement("BE0601", "benefitsMenu");
@@ -205,8 +198,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Plan History
 	@Test(groups = "Benefits")
 	public void planHistory() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Benefits
 		clickElement("BE0701", "benefitsMenu");
@@ -218,8 +210,7 @@ public class VNSHealthTotal extends BaseTest {
 	// myPCP
 	@Test(groups = "My Care")
 	public void myPCP() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click My Care Menu
 		clickElement("MC0101", "myCareMenu");
@@ -234,8 +225,7 @@ public class VNSHealthTotal extends BaseTest {
 	// myHealthPlanCareTeam
 	@Test(groups = "My Care")
 	public void myHealthPlanCareTeam() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click My Care Menu
 		clickElement("MC0201", "myCareMenu");
@@ -249,8 +239,7 @@ public class VNSHealthTotal extends BaseTest {
 	// serviceAuthorizations
 	@Test(groups = "My Care")
 	public void serviceAuthorizations() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click My Care Menu
 		clickElement("MC0301", "myCareMenu");
@@ -261,8 +250,7 @@ public class VNSHealthTotal extends BaseTest {
 	// My Medical Supplies and Equipment
 	@Test(groups = "My Care")
 	public void myMedicalSupp() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click My Care Menu
 		clickElement("MC0401", "myCareMenu");
@@ -274,8 +262,7 @@ public class VNSHealthTotal extends BaseTest {
 	// MyClaims
 	@Test(groups = "Claims")
 	public void claims() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Claims Menu
 		clickElement("CL0101", "claimsMenu");
@@ -289,8 +276,7 @@ public class VNSHealthTotal extends BaseTest {
 	// My Plan Resources
 	@Test(groups = "Resources")
 	public void myPlanResources() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Resources Menu
 		clickElement("RE0101", "resourcesMenu");
@@ -322,8 +308,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Benefit Partners
 	@Test(groups = "Resources")
 	public void benefitPartners() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Resources Menu
 		clickElement("RE0201", "resourcesMenu");
@@ -353,8 +338,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Grievances
 	@Test(groups = "Grievances And Appeals")
 	public void grievances() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0101", "grievancesMenu");
@@ -367,8 +351,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Appeals
 	@Test(groups = "Grievances And Appeals")
 	public void appeals() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0201", "grievancesMenu");
@@ -381,8 +364,7 @@ public class VNSHealthTotal extends BaseTest {
 	// Communication Center
 	@Test(groups = "Communication Center")
 	public void communicationCenter() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click Communication Center Menu
 		clickElement("CC0101", "comCenterMenu");
@@ -399,8 +381,7 @@ public class VNSHealthTotal extends BaseTest {
 	// My Account
 	@Test(groups = "My Account")
 	public void myAccount() throws InterruptedException, IOException {
-		ArrayList V70069794 = d.getData("V70069794", "loginCred");
-		String hPlan = (String) V70069794.get(5);
+
 		loginTotal();
 		// Click My Account Menu
 		clickElement("MA0101", "myAccountMenu");

@@ -22,9 +22,9 @@ public class EasyCare extends BaseTest {
 		String uname = (String) V70040578.get(1);
 		String pswd = (String) V70040578.get(2);
 		String healthPlan = (String) V70040578.get(5);
-		login(uname, pswd, healthPlan );
+		login(uname, pswd, healthPlan);
 	}
-	
+
 	@BeforeSuite
 	public void initialiseExtentReports() {
 		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationEasyCare.html");
@@ -36,14 +36,13 @@ public class EasyCare extends BaseTest {
 		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
 		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
 		extentReports.setSystemInfo("Environment", "Test Environment");
-	
+
 	}
-	
+
 	// Homepage
 	@Test(groups = "Homepage")
 	public void homePage() throws InterruptedException, IOException {
-		ArrayList V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		Thread.sleep(3000);
 		// Click Name
@@ -86,8 +85,7 @@ public class EasyCare extends BaseTest {
 	// Benefits
 	@Test(groups = "Benefits", priority = 1)
 	public void benefits() throws InterruptedException, IOException {
-		ArrayList V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Benefits
 		clickElement("BE0101", "benefitsMenu");
@@ -119,8 +117,7 @@ public class EasyCare extends BaseTest {
 	// Pharmacy and Prescriptions
 	@Test(groups = "Benefits")
 	public void pharmacyAndPrescp() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Benefits Menu
 		clickElement("BE0201", "benefitsMenu");
@@ -140,8 +137,7 @@ public class EasyCare extends BaseTest {
 	// ID Card
 	@Test(groups = "Benefits")
 	public void idCard() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Benefits
 		clickElement("BE0301", "benefitsMenu");
@@ -159,8 +155,7 @@ public class EasyCare extends BaseTest {
 	// OTC Benefits
 	@Test(groups = "Benefits")
 	public void otcBenefits() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Benefits Menu
 		clickElement("BE0401", "benefitsMenu");
@@ -177,8 +172,7 @@ public class EasyCare extends BaseTest {
 	// Rewards
 	@Test(groups = "Benefits")
 	public void rewards() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Benefits
 		clickElement("BE0601", "benefitsMenu");
@@ -191,8 +185,7 @@ public class EasyCare extends BaseTest {
 	// Plan History
 	@Test(groups = "Benefits")
 	public void planHistory() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Benefits
 		clickElement("BE0701", "benefitsMenu");
@@ -204,8 +197,7 @@ public class EasyCare extends BaseTest {
 	// myPCP
 	@Test(groups = "My Care")
 	public void myPCP() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click My Care Menu
 		clickElement("MC0101", "myCareMenu");
@@ -220,8 +212,7 @@ public class EasyCare extends BaseTest {
 	// myHealthPlanCareTeam
 	@Test(groups = "My Care")
 	public void myHealthPlanCareTeam() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click My Care Menu
 		clickElement("MC0201", "myCareMenu");
@@ -235,8 +226,7 @@ public class EasyCare extends BaseTest {
 	// serviceAuthorizations
 	@Test(groups = "My Care")
 	public void serviceAuthorizations() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click My Care Menu
 		clickElement("MC0301", "myCareMenu");
@@ -247,8 +237,7 @@ public class EasyCare extends BaseTest {
 	// My Medical Supplies and Equipment
 	@Test(groups = "My Care")
 	public void myMedicalSupp() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click My Care Menu
 		clickElement("MC0401", "myCareMenu");
@@ -260,8 +249,7 @@ public class EasyCare extends BaseTest {
 	// MyClaims
 	@Test(groups = "Claims")
 	public void claims() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Claims Menu
 		clickElement("CL0101", "claimsMenu");
@@ -275,8 +263,7 @@ public class EasyCare extends BaseTest {
 	// My Plan Resources
 	@Test(groups = "Resources")
 	public void myPlanResources() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Resources Menu
 		clickElement("RE0101", "resourcesMenu");
@@ -305,8 +292,7 @@ public class EasyCare extends BaseTest {
 	// Benefit Partners
 	@Test(groups = "Resources")
 	public void benefitPartners() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Resources Menu
 		clickElement("RE0201", "resourcesMenu");
@@ -334,8 +320,7 @@ public class EasyCare extends BaseTest {
 	// Grievances
 	@Test(groups = "Grievances And Appeals")
 	public void grievances() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0101", "grievancesMenu");
@@ -348,8 +333,7 @@ public class EasyCare extends BaseTest {
 	// Appeals
 	@Test(groups = "Grievances And Appeals")
 	public void appeals() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0201", "grievancesMenu");
@@ -362,8 +346,7 @@ public class EasyCare extends BaseTest {
 	// Communication Center
 	@Test(groups = "Communication Center")
 	public void communicationCenter() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click Communication Center Menu
 		clickElement("CC0101", "comCenterMenu");
@@ -379,8 +362,7 @@ public class EasyCare extends BaseTest {
 	// My Account
 	@Test(groups = "My Account")
 	public void myAccount() throws InterruptedException, IOException {
-		ArrayList<String> V70040578 = d.getData("V70040578", "loginCred");
-		String hPlan= (String) V70040578.get(5);
+
 		loginEasyCare();
 		// Click My Account Menu
 		clickElement("MA0101", "myAccountMenu");

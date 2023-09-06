@@ -41,8 +41,7 @@ public class SelectHealth extends BaseTest {
 	// Homepage
 	@Test(groups = "Homepage")
 	public void homePage() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		Thread.sleep(3000);
 		// Click Name
@@ -85,8 +84,7 @@ public class SelectHealth extends BaseTest {
 	// Benefits
 	@Test(groups = "Benefits", priority = 1)
 	public void benefits() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0101", "benefitsMenu");
@@ -107,8 +105,7 @@ public class SelectHealth extends BaseTest {
 	// ID Card
 	@Test(groups = "Benefits")
 	public void idCard() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0301", "benefitsMenu");
@@ -126,8 +123,7 @@ public class SelectHealth extends BaseTest {
 	// Rewards
 	@Test(groups = "Benefits")
 	public void rewards() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0601", "benefitsMenu");
@@ -141,8 +137,7 @@ public class SelectHealth extends BaseTest {
 	// Plan History
 	@Test(groups = "Benefits")
 	public void planHistory() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Benefits
 		clickElement("BE0701", "benefitsMenu");
@@ -154,8 +149,7 @@ public class SelectHealth extends BaseTest {
 	// myPCP
 	@Test(groups = "My Care")
 	public void myPCP() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0101", "myCareMenu");
@@ -170,8 +164,7 @@ public class SelectHealth extends BaseTest {
 	// myHealthPlanCareTeam
 	@Test(groups = "My Care")
 	public void myHealthPlanCareTeam() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0201", "myCareMenu");
@@ -185,8 +178,7 @@ public class SelectHealth extends BaseTest {
 	// serviceAuthorizations
 	@Test(groups = "My Care")
 	public void serviceAuthorizations() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0301", "myCareMenu");
@@ -197,8 +189,7 @@ public class SelectHealth extends BaseTest {
 	// My Medical Supplies and Equipment
 	@Test(groups = "My Care")
 	public void myMedicalSupp() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click My Care Menu
 		clickElement("MC0401", "myCareMenu");
@@ -210,8 +201,7 @@ public class SelectHealth extends BaseTest {
 	// MyClaims
 	@Test(groups = "Claims")
 	public void claims() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Claims Menu
 		clickElement("CL0101", "claimsMenu");
@@ -225,8 +215,7 @@ public class SelectHealth extends BaseTest {
 	// My Plan Resources
 	@Test(groups = "Resources")
 	public void myPlanResources() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Resources Menu
 		clickElement("RE0101", "resourcesMenu");
@@ -251,8 +240,7 @@ public class SelectHealth extends BaseTest {
 	// Benefit Partners
 	@Test(groups = "Resources")
 	public void benefitPartners() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Resources Menu
 		clickElement("RE0201", "resourcesMenu");
@@ -272,7 +260,7 @@ public class SelectHealth extends BaseTest {
 	@Test(groups = "Grievances And Appeals")
 	public void grievances() throws InterruptedException, IOException {
 		ArrayList<String> V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0101", "grievancesMenu");
@@ -285,8 +273,7 @@ public class SelectHealth extends BaseTest {
 	// Appeals
 	@Test(groups = "Grievances And Appeals")
 	public void appeals() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Grievances and Appeals Menu
 		clickElement("GA0201", "grievancesMenu");
@@ -299,8 +286,7 @@ public class SelectHealth extends BaseTest {
 	// Communication Center
 	@Test(groups = "Communication Center")
 	public void communicationCenter() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click Communication Center Menu
 		clickElement("CC0101", "comCenterMenu");
@@ -317,8 +303,7 @@ public class SelectHealth extends BaseTest {
 	// My Account
 	@Test(groups = "My Account")
 	public void myAccount() throws InterruptedException, IOException {
-		ArrayList V80041737 = d.getData("V80041737", "loginCred");
-		String hPlan = (String) V80041737.get(5);
+
 		loginSelectHealth();
 		// Click My Account Menu
 		clickElement("MA0101", "myAccountMenu");
