@@ -56,7 +56,6 @@ public class BaseTest {
 	String fileDate = date.toString().replace(":", "_").replace(" ", "_");
 
 	public void initialiseExtentReports(String reportName, String reportTitle) {
-		//ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationEasyCare.html");
 		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter(reportName);
 		sparkReporter_all.config().setReportName(reportTitle);
 		sparkReporter_all.config().setTheme(Theme.STANDARD);
@@ -68,7 +67,7 @@ public class BaseTest {
 //
 //		extentReports = new ExtentReports();
 //		extentReports.attachReporter(sparkReporter_all, sparkReporter_failed);
-		
+
 		extentReports = new ExtentReports();
 		extentReports.attachReporter(sparkReporter_all);
 		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
@@ -76,7 +75,7 @@ public class BaseTest {
 		extentReports.setSystemInfo("Environment", "Test Environment");
 
 	}
-	
+
 	@Parameters("browserName")
 	@BeforeTest
 	public void setup(ITestContext context, @Optional("chrome") String browserName)
@@ -117,45 +116,44 @@ public class BaseTest {
 		String loginPage = (String) TS01.get(6);
 		driver.get(loginPage);
 		Thread.sleep(6000);
-		extentTest.log(Status.PASS, "Get Login Page. URL is " + loginPage, MediaEntityBuilder
+		extentTest.log(Status.PASS, (String) TS01.get(1)+" URL is: " + loginPage, MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("Loginpage" + fileDate + ".jpg")).build());
 
 		// enter username
 		ArrayList TS02 = d.getData("LI02", "loginSteps");
 		WebElement uname = driver.findElement(By.xpath((String) TS02.get(5)));
 		uname.sendKeys(username);
-		extentTest.log(Status.PASS, "Enter Username: " + username + ", Health Plan: " + healthPlan,
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("username" +fileDate+ ".jpg")).build());
+		extentTest.log(Status.PASS, (String) TS02.get(1)+"Username is: " + username + ", Health Plan is: " + healthPlan, MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("username" + fileDate + ".jpg")).build());
 
 		// enter password
 		ArrayList TS03 = d.getData("LI03", "loginSteps");
 		WebElement pwd = driver.findElement(By.xpath((String) TS03.get(5)));
 		pwd.sendKeys(password);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		extentTest.log(Status.PASS, "Enter Password",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("password"+fileDate + ".jpg")).build());
+		extentTest.log(Status.PASS, (String) TS03.get(1), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("password" + fileDate + ".jpg")).build());
 
 		// login
 		ArrayList TS04 = d.getData("LI04", "loginSteps");
 		WebElement signOn = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn.click();
-		extentTest.log(Status.PASS, "Click Sign On",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("signon" +fileDate+ ".jpg")).build());
+		extentTest.log(Status.PASS, (String) TS04.get(1), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("signon" + fileDate + ".jpg")).build());
 
 		// enter password
 		WebElement pwd1 = driver.findElement(By.xpath((String) TS03.get(5)));
 		pwd1.sendKeys(password);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		extentTest.log(Status.PASS, "Enter Password",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("password1" +fileDate+ ".jpg")).build());
+		extentTest.log(Status.PASS, (String) TS03.get(1), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("password1" + fileDate + ".jpg")).build());
 
-		// login
-		extentTest.log(Status.PASS, "Click Sign On",
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("signon1" +fileDate+ ".jpg")).build());
+		// Sign on
 		WebElement signOn1 = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn1.click();
 		Thread.sleep(5000);
-		// handleAlert();
+		extentTest.log(Status.PASS, (String) TS04.get(1), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("signon1" + fileDate + ".jpg")).build());
 	}
 
 	public void clickElement(String rowName, String sheetName) throws IOException, InterruptedException {
@@ -164,8 +162,7 @@ public class BaseTest {
 		element.click();
 		Thread.sleep(6000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +fileDate+ ".jpg")).build());
-		// handleAlert();
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
 	}
 
 	public void clickElementChildWindow(String rowName, String sheetName) throws IOException, InterruptedException {
@@ -180,53 +177,42 @@ public class BaseTest {
 
 		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +fileDate+ ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
-		// handleAlert();
 	}
 
 	public void clickElementJSExecute(String rowName, String sheetName) throws IOException, InterruptedException {
 		ArrayList list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		// element.click();
 		Thread.sleep(3000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +fileDate+ ".jpg")).build());
-		// handleAlert();
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
 	}
 
 	@AfterSuite
 	public void generateExtentReports() throws Exception {
 		extentReports.flush();
-		// Desktop.getDesktop().browse(new File("ProviderPortalTests.html").toURI());
+		// Desktop.getDesktop().browse(new File(".html").toURI());
 		// Desktop.getDesktop().browse(new File("FailedTests.html").toURI());
-		// excelWR.writeIntoExcel();
 	}
 
 	@AfterMethod
 	public void checkStatus(Method m, ITestResult result) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
-//
-//			String screenshotpath = null;
-//			screenshotpath = captureScreenshot("failTest.jpg");
 			extentTest.fail(m.getName() + " has failed");
-			extentTest.log(Status.FAIL, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName()+fileDate + ".jpg")).build());
+			extentTest.log(Status.FAIL, result.getThrowable(), MediaEntityBuilder
+					.createScreenCaptureFromPath(captureScreenshot(m.getName() + fileDate + ".jpg")).build());
 		}
 		if (result.getStatus() == ITestResult.SKIP) {
-//
-//			String screenshotpath = null;
-//			screenshotpath = captureScreenshot("skipTest.jpg");
 			extentTest.skip(m.getName() + " has skipped");
-			extentTest.log(Status.SKIP, result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(m.getName() + fileDate + ".jpg"))
-							.build());
+			extentTest.log(Status.SKIP, result.getThrowable(), MediaEntityBuilder
+					.createScreenCaptureFromPath(captureScreenshot(m.getName() + fileDate + ".jpg")).build());
 
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
-
+			extentTest.pass(m.getName() + " has passed");
 		}
 
 		extentTest.assignCategory(m.getAnnotation(Test.class).groups());

@@ -26,25 +26,6 @@ public class EasyCare extends BaseTest {
 		login(uname, pswd, healthPlan);
 	}
 
-//	@BeforeSuite
-//	public void initialiseExtentReports() {
-//		ExtentSparkReporter sparkReporter_all = new ExtentSparkReporter("MemberPortalAutomationEasyCare.html");
-//		sparkReporter_all.config().setReportName("Member Portal: Easy Care Plan Automation Report");
-//		sparkReporter_all.config().setTheme(Theme.STANDARD);
-//
-//		//Failed Report
-//		ExtentSparkReporter sparkReporter_failed = new ExtentSparkReporter("FailedTestsEC.html");
-//		sparkReporter_failed.filter().statusFilter().as(new Status[] {Status.FAIL}).apply();
-//		sparkReporter_failed.config().setReportName("Failure Report");
-//
-//		extentReports = new ExtentReports();
-//		extentReports.attachReporter(sparkReporter_all, sparkReporter_failed);
-//		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
-//		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-//		extentReports.setSystemInfo("Environment", "Test Environment");
-//
-//	}
-
 	@BeforeSuite
 	public void initializeReport() {
 	initialiseExtentReports("MemberPortalAutomationEasyCare.html", "Member Portal: Easy Care Plan Automation Report");
