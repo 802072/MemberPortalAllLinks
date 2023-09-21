@@ -11,9 +11,10 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import dataDriven.dataDriven;
-import extentReport.BaseTest;
+import extentReport.BaseTest_AllLinks;
+import extentReport.BaseTest_BLBI;
 
-public class VNSHealthTotal extends BaseTest {
+public class VNSHealthTotal extends BaseTest_AllLinks  {
 	dataDriven d = new dataDriven();
 
 	@BeforeSuite

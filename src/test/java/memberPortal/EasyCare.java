@@ -13,9 +13,10 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import dataDriven.dataDriven;
-import extentReport.BaseTest;
+import extentReport.BaseTest_AllLinks;
+import extentReport.BaseTest_BLBI;
 
-public class EasyCare extends BaseTest {
+public class EasyCare extends BaseTest_AllLinks {
 	dataDriven d = new dataDriven();
 
 	public void loginEasyCare() throws IOException, InterruptedException {

@@ -1,4 +1,4 @@
-package memberPortal;
+package memberPortalBrokenLinkAndBrokenImage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,15 +11,15 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import dataDriven.dataDriven;
-import extentReport.BaseTest_AllLinks;
 import extentReport.BaseTest_BLBI;
 
-public class SelectHealth extends BaseTest_AllLinks  {
+public class SelectHealth extends BaseTest_BLBI {
 	dataDriven d = new dataDriven();
 
 	@BeforeSuite
 	public void initializeReport() {
-	initialiseExtentReports("MemberPortalAutomationSelectHealth.html", "Member Portal: Select Health Plan Automation Report");
+	initialiseExtentReports("MemberPortalAutomationSelectHealth_BLBI.html", 
+			"Member Portal: Select Health Plan Automation Report");
 	}
 
 	public void loginSelectHealth() throws IOException, InterruptedException {
@@ -37,40 +37,8 @@ public class SelectHealth extends BaseTest_AllLinks  {
 
 		loginSelectHealth();
 		Thread.sleep(3000);
-		// Click Name
-		clickElement("HP0101", "homePage");
-		driver.navigate().back();
-		// Click View And Print ID Card
-		clickElement("HP0102", "homePage");
-		driver.navigate().back();
-		// Click Check My Benefits
-		clickElementJSExecute("HP0103", "homePage");
-		driver.navigate().back();
-		// Click View My Care Team
-		clickElementJSExecute("HP0104", "homePage");
-		driver.navigate().back();
-		// Click Review My Medical Supplies
-		clickElementJSExecute("HP0105", "homePage");
-		driver.navigate().back();
-		// Click My Action Items
-		clickElementJSExecute("HP0106", "homePage");
-		driver.navigate().back();
-		// Click View Claims
-		clickElementJSExecute("HP0107", "homePage");
-		driver.navigate().back();
-		// Click View Service Authorizations
-		clickElementJSExecute("HP0108", "homePage");
-		driver.navigate().back();
-		// Click Rewards Link
-		clickElementJSExecute("HP0112", "homePage");
-		driver.navigate().back();
-		// Click Technical Support Link
-		clickElement("HP0109", "homePage");
-		driver.navigate().back();
-		// Click Terms of Use Link
-		clickElementChildWindow("HP0110", "homePage");
-		// Click Privacy Policy Link
-		clickElementChildWindow("HP0111", "homePage");
+		testBrokenImages();
+		testBrokenLinks();
 
 	}
 
@@ -83,16 +51,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
 		clickElement("BE0102", "benefitsMenu");
-
-		// Click Member Handbook Link (this page)
-		clickElementChildWindow("BE0116", "benefitsMenu");
-
-		// Click Carelon Link
-		clickElementChildWindow("BE0114", "benefitsMenu");
-		// Click Healthplex
-		clickElementChildWindow("BE0105", "benefitsMenu");
-		// Click Superior Vision
-		clickElementChildWindow("BE0106", "benefitsMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// ID Card
@@ -104,12 +65,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
 		clickElement("BE0302", "benefitsMenu");
-		Thread.sleep(5000);
-		// Click Communication Center
-		clickElement("BE0303", "benefitsMenu");
-		driver.navigate().back();
-		// Click Return to Home
-		clickElement("BE0304", "benefitsMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 
 	}
 
@@ -122,9 +80,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("BE0601", "benefitsMenu");
 		// Click Rewards Sub-menu
 		clickElement("BE0602", "benefitsMenu");
-
-		// Click Download Brochure Link
-		clickElementChildWindow("BE0604", "benefitsMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// Plan History
@@ -136,6 +94,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
 		clickElement("BE0702", "benefitsMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// My Care
@@ -148,10 +109,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("MC0101", "myCareMenu");
 		// Click My PCP Sub-menu
 		clickElement("MC0102", "myCareMenu");
-		// Click Provider Directory Link
-		clickElementChildWindow("MC0103", "myCareMenu");
-		// Click Request a PCP Change Link
-		clickElementJSExecute("MC0104", "myCareMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// myHealthPlanCareTeam
@@ -163,8 +123,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
 		clickElement("MC0202", "myCareMenu");
-		// Click Communication Center
-		clickElementChildWindow("MC0203", "myCareMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 
 	}
 
@@ -177,6 +138,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
 		clickElement("MC0302", "myCareMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// My Medical Supplies and Equipment
@@ -188,6 +152,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("MC0401", "myCareMenu");
 		// Click My Medica Supp Sub-menu
 		clickElement("MC0402", "myCareMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// Claims
@@ -200,8 +167,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
 		clickElement("CL0102", "claimsMenu");
-		// Click Submit Reimbursement Request Link
-		clickElementJSExecute("CL0103", "claimsMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// Resources
@@ -214,19 +182,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
 		clickElement("RE0102", "resourcesMenu");
-
-		// Click Transgender Health Services Link
-		clickElementChildWindow("RE0115", "resourcesMenu");
-		// Click HIV Resources Link
-		clickElementChildWindow("RE0116", "resourcesMenu");
-		// Click Reources for Homeless Individuals Link
-		clickElementChildWindow("RE0117", "resourcesMenu");
-		// Click Home & Community-Based Services Link
-		clickElementChildWindow("RE0118", "resourcesMenu");
-		// Click Provider Search Link
-		clickElementChildWindow("RE0119", "resourcesMenu");
-		// Click Member Forms & Materials Link
-		clickElementChildWindow("RE0120", "resourcesMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 
 	}
 
@@ -239,13 +197,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
 		clickElement("RE0202", "resourcesMenu");
-
-		// Click Carelon Link
-		clickElementChildWindow("RE0210", "resourcesMenu");
-		// Click Healthplex
-		clickElementChildWindow("RE0203", "resourcesMenu");
-		// Click Superior Vision
-		clickElementChildWindow("RE0204", "resourcesMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// Grievances and Appeals
@@ -259,8 +213,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
 		clickElement("GA0102", "grievancesMenu");
-		// Click Learn About Complaints
-		clickElementChildWindow("GA0103", "grievancesMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// Appeals
@@ -272,8 +227,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("GA0201", "grievancesMenu");
 		// Click Grievances Sub-menu
 		clickElement("GA0202", "grievancesMenu");
-		// Click Learn About Appeals
-		clickElementChildWindow("GA0203", "grievancesMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// Communication Center
@@ -285,12 +241,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
 		clickElement("CC0102", "comCenterMenu");
-		// Click Learn About Complaints
-		clickElementJSExecute("CC0103", "comCenterMenu");
-
-		driver.navigate().back();
-		// Click Send a Message
-		clickElement("CC0104", "comCenterMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 	}
 
 	// My Account
@@ -302,12 +255,9 @@ public class SelectHealth extends BaseTest_AllLinks  {
 		clickElement("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
 		clickElement("MA0102", "myAccountMenu");
-		// Click Request Change
-		clickElement("MA0103", "myAccountMenu");
-		// Click Cancel
-		clickElement("MA0104", "myAccountMenu");
-		// Click Change Password
-		clickElement("MA0105", "myAccountMenu");
+		Thread.sleep(3000);
+		testBrokenImages();
+		testBrokenLinks();
 
 	}
 
