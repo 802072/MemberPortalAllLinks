@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+	<listeners>
+		<listener class-name="ListenerImp.AnnotationListener"></listener>
+	</listeners>
+
 	<!--Homepage-->
 	<test
 		name="Homepage (chrome)">
@@ -17,7 +21,7 @@
 			</class>
 		</classes>
 	</test>
-	
+
 	<!--Benefits-->
 	<test
 		name="Benefits (chrome)">
@@ -216,8 +220,8 @@
 			</class>
 		</classes>
 	</test>
-	
-		<!--My Account-->
+
+	<!--My Account-->
 	<test
 		name="My Account (chrome)">
 		<parameter
@@ -233,10 +237,10 @@
 			</class>
 		</classes>
 	</test>
-	
+
 	<!--EDGEBROWSER-->
-	
-		<!--Homepage-->
+
+	<!--Homepage-->
 	<test
 		name="Homepage (edge)">
 		<parameter
@@ -252,7 +256,7 @@
 			</class>
 		</classes>
 	</test>
-	
+
 	<!--Benefits-->
 	<test
 		name="Benefits (edge)">
@@ -451,8 +455,8 @@
 			</class>
 		</classes>
 	</test>
-	
-		<!--My Account-->
+
+	<!--My Account-->
 	<test
 		name="My Account (edge)">
 		<parameter

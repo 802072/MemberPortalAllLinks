@@ -317,12 +317,12 @@ public class BaseTest_BLBI {
 				emptyLst.add(myurl);
 				continue;
 			}
-			if (myurl.contains("https://vnshealth")) {
+			if (myurl.contains("https://vnshealth-crm--fullsbx.sandbox.my.site.com/member")) {
 				myDomainLst.add(myurl);
 				continue;
 			}
 
-			if (!myurl.contains("https://vnshealth")) {
+			if (!myurl.contains("https://vnshealth-crm--fullsbx.sandbox.my.site.com/member")) {
 				anotherDomainLst.add(myurl);
 				continue;
 			}
