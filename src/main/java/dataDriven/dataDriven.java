@@ -18,7 +18,7 @@ public class dataDriven {
 		ArrayList<String> a = new ArrayList<String>();
 
 		FileInputStream fis = new FileInputStream(
-				System.getProperty("user.dir")+"\\src\\test\\resources\\testCases\\testCases.xlsx");
+				System.getProperty("user.dir")+"\\src\\test\\resources\\testCases\\testCases1.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fis);
 
 		int sheets = workbook.getNumberOfSheets();
@@ -51,7 +51,8 @@ public class dataDriven {
 					Row r = rows.next();
 					
 
-					if (r.getCell(column).getStringCellValue().equalsIgnoreCase(testcaseName)) {
+					if(r.getCell(column)!=null && r.getCell(column).getStringCellValue().equalsIgnoreCase(testcaseName)) {
+						
 						Iterator<Cell> cv = r.cellIterator();
 						while (cv.hasNext()) {
 							Cell c = cv.next();
