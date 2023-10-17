@@ -21,6 +21,7 @@ import extentReport.BaseTest_BLBI;
 
 public class EasyCare extends BaseTest_AllLinks {
 	dataDriven d = new dataDriven();
+	int colNum = 11;
 
 	public void loginEasyCare() throws IOException, InterruptedException {
 		ArrayList V70040578 = d.getData("V70040578", "loginCred");
@@ -44,70 +45,69 @@ public class EasyCare extends BaseTest_AllLinks {
 		Thread.sleep(3000);
 
 		// Verify Member's Name is Displayed
-		assertIsDisplayed("HP0101", "homePage");
+		assertEquals("HP0101", "homePage", colNum);
 
 		// Verify Phone Number and Operation Hours are Displayed
-		assertEquals("HP0119", "homePage");
+		assertEquals("HP0119", "homePage", colNum);
 
-		// Verify Health Plan Name is Displayed
-		assertIsDisplayed("HP0120", "homePage");
+		// Verify Health Plan is Displayed
+		assertEquals("HP0120", "homePage", colNum);
 
 		// Click Name
-		clickElement("HP0101", "homePage");
-		verifyPageTitle("HP0101", "homePage");
+		clickElementJSExecute("HP0101", "homePage");
 		driver.navigate().back();
 
 		// Click View And Print ID Card
-		clickElement("HP0102", "homePage");
-		verifyPageTitle("HP0102", "homePage");
+		clickElementJSExecute("HP0102", "homePage");
+		verifyPageTitle("HP0102", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click Check My Benefits
 		clickElementJSExecute("HP0103", "homePage");
-		verifyPageTitle("HP0103", "homePage");
+		verifyPageTitle("HP0103", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click View My Care Team
 		clickElementJSExecute("HP0104", "homePage");
-		verifyPageTitle("HP0104", "homePage");
+		verifyPageTitle("HP0104", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click Review My Medical Supplies
 		clickElementJSExecute("HP0105", "homePage");
-		verifyPageTitle("HP0105", "homePage");
+		verifyPageTitle("HP0105", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click My Action Items
 		clickElementJSExecute("HP0106", "homePage");
-		verifyPageTitle("HP0106", "homePage");
+		verifyPageTitle("HP0106", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click View Claims
 		clickElementJSExecute("HP0107", "homePage");
-		verifyPageTitle("HP0107", "homePage");
+		verifyPageTitle("HP0107", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click View Service Authorizations
 		clickElementJSExecute("HP0108", "homePage");
-		verifyPageTitle("HP0108", "homePage");
+		verifyPageTitle("HP0108", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click Rewards Link
 		clickElementJSExecute("HP0112", "homePage");
-		verifyPageTitle("HP0112", "homePage");
+		verifyPageTitle("HP0112", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click Technical Support Link
-		clickElement("HP0109", "homePage");
-		verifyPageTitle("HP0109", "homePage");
+		clickElementJSExecute("HP0109", "homePage");
+		verifyPageTitle("HP0109", "homePage", colNum);
 		driver.navigate().back();
 
 		// Click Terms of Use Link
-		clickElementChildWindow("HP0110", "homePage");
+		openChildWindowVerifyTitle("HP0110", "homePage", colNum);
 		// Click Privacy Policy Link
-		clickElementChildWindow("HP0111", "homePage");
+		openChildWindowVerifyTitle("HP0111", "homePage", colNum);
 
-		submitFeedback("HP0115");
+		submitFeedback("HP0114");
 
 	}
 
@@ -117,33 +117,32 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Benefits
-		clickElement("BE0101", "benefitsMenu");
+		clickElementJSExecute("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
-		clickElement("BE0102", "benefitsMenu");
-
+		clickElementJSExecute("BE0102", "benefitsMenu");
 		// Verify Page Title
-		verifyPageTitle("BE0102", "benefitsMenu");
+		verifyPageTitle("BE0102", "benefitsMenu", colNum);
 
 		// Click View Summary of Benefits Link
-		clickElementChildWindow("BE0108", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0108", "benefitsMenu", colNum);
 		// Click View Evidence of Coverage Link
-		clickElementChildWindow("BE0109", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0109", "benefitsMenu", colNum);
 		// Click MedImpact Link
-		clickElementChildWindow("BE0110", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0110", "benefitsMenu", colNum);
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("BE0111", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0111", "benefitsMenu", colNum);
 		// Click Rewards Link
-		clickElementChildWindow("BE0113", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0113", "benefitsMenu", colNum);
 		// Click Carelon Link
-		clickElementChildWindow("BE0114", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0114", "benefitsMenu", colNum);
 		// Click Healthplex
-		clickElementChildWindow("BE0105", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0105", "benefitsMenu", colNum);
 		// Click Superior Vision
-		clickElementChildWindow("BE0106", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0106", "benefitsMenu", colNum);
 		// Click Click Modivcare
-		clickElementChildWindow("BE0107", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0107", "benefitsMenu", colNum);
 		// Click SilverSneakers Link
-		clickElementChildWindow("BE0115", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0115", "benefitsMenu", colNum);
 		Thread.sleep(5000);
 	}
 
@@ -153,21 +152,21 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Benefits Menu
-		clickElement("BE0201", "benefitsMenu");
+		clickElementJSExecute("BE0201", "benefitsMenu");
 		// Click Pharmacy And Prescriptions Sub-menu
-		clickElement("BE0202", "benefitsMenu");
+		clickElementJSExecute("BE0202", "benefitsMenu");
 
 		// Verify Page Title
-		verifyPageTitle("BE0202", "benefitsMenu");
+		verifyPageTitle("BE0202", "benefitsMenu", colNum);
 
 		// Click Go to MedImpact Link
-		clickElementChildWindow("BE0203", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0203", "benefitsMenu", colNum);
 		// Click Find a Medication Link
-		clickElementChildWindow("BE0204", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0204", "benefitsMenu", colNum);
 		// Click MedImpact Link
-		clickElementChildWindow("BE0205", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0205", "benefitsMenu", colNum);
 		// Click Formulary Link
-		clickElementChildWindow("BE0206", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0206", "benefitsMenu", colNum);
 
 	}
 
@@ -177,19 +176,19 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Benefits
-		clickElement("BE0301", "benefitsMenu");
+		clickElementJSExecute("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
-		clickElement("BE0302", "benefitsMenu");
+		clickElementJSExecute("BE0302", "benefitsMenu");
 		Thread.sleep(5000);
 		// Verify Page Title
-		verifyPageTitle("BE0302", "benefitsMenu");
+		verifyPageTitle("BE0302", "benefitsMenu", colNum);
 
 		// Click Communication Center
-		clickElement("BE0303", "benefitsMenu");
-		verifyPageTitle("BE0303", "benefitsMenu");
+		clickElementJSExecute("BE0303", "benefitsMenu");
+		verifyPageTitle("BE0303", "benefitsMenu", colNum);
 		driver.navigate().back();
 		// Click Return to Home
-		clickElement("BE0304", "benefitsMenu");
+		clickElementJSExecute("BE0304", "benefitsMenu");
 
 	}
 
@@ -199,18 +198,18 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Benefits Menu
-		clickElement("BE0401", "benefitsMenu");
+		clickElementJSExecute("BE0401", "benefitsMenu");
 		// Click OTC Benefits Sub-menu
-		clickElement("BE0402", "benefitsMenu");
-
+		clickElementJSExecute("BE0402", "benefitsMenu");
 		// Verify Page Title
-		verifyPageTitle("BE0402", "benefitsMenu");
+		verifyPageTitle("BE0402", "benefitsMenu", colNum);
+
 		// Click Go To OTC Portal Link
-		clickElementChildWindow("BE0403", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0403", "benefitsMenu", colNum);
 		// Click Learn About OTC Benefits Link
-		clickElementChildWindow("BE0406", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0406", "benefitsMenu", colNum);
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("BE0405", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0405", "benefitsMenu", colNum);
 	}
 
 	// Rewards
@@ -219,15 +218,15 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Benefits
-		clickElement("BE0601", "benefitsMenu");
+		clickElementJSExecute("BE0601", "benefitsMenu");
 
 		// Click Rewards Sub-menu
-		clickElement("BE0602", "benefitsMenu");
+		clickElementJSExecute("BE0602", "benefitsMenu");
 
 		// Verify Page Title
-		verifyPageTitle("BE0602", "benefitsMenu");
+		verifyPageTitle("BE0602", "benefitsMenu", colNum);
 		// Click Learn About Rewards Link
-		clickElementChildWindow("BE0603", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0603", "benefitsMenu", colNum);
 	}
 
 	// Plan History
@@ -236,12 +235,12 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Benefits
-		clickElement("BE0701", "benefitsMenu");
+		clickElementJSExecute("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
-		clickElement("BE0702", "benefitsMenu");
+		clickElementJSExecute("BE0702", "benefitsMenu");
 
 		// Verify Page Title
-		verifyPageTitle("BE0702", "benefitsMenu");
+		verifyPageTitle("BE0702", "benefitsMenu", colNum);
 	}
 
 	// My Care
@@ -251,16 +250,16 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click My Care Menu
-		clickElement("MC0101", "myCareMenu");
+		clickElementJSExecute("MC0101", "myCareMenu");
 		// Click My PCP Sub-menu
-		clickElement("MC0102", "myCareMenu");
+		clickElementJSExecute("MC0102", "myCareMenu");
 
 		// Verify Page Title
-		verifyPageTitle("MC0102", "myCareMenu");
+		verifyPageTitle("MC0102", "myCareMenu", colNum);
 		// Click Provider Directory Link
-		clickElementChildWindow("MC0103", "myCareMenu");
+		openChildWindowVerifyTitle("MC0103", "myCareMenu", colNum);
 		// Click Request a PCP Change Link
-		clickElement("MC0104", "myCareMenu");
+		clickElementJSExecute("MC0104", "myCareMenu");
 	}
 
 	// myHealthPlanCareTeam
@@ -269,14 +268,14 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click My Care Menu
-		clickElement("MC0201", "myCareMenu");
+		clickElementJSExecute("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
-		clickElement("MC0202", "myCareMenu");
+		clickElementJSExecute("MC0202", "myCareMenu");
 
 		// Verify Page Title
-		verifyPageTitle("MC0202", "myCareMenu");
+		verifyPageTitle("MC0202", "myCareMenu", colNum);
 		// Click Communication Center
-		clickElementChildWindow("MC0203", "myCareMenu");
+		openChildWindowVerifyTitle("MC0203", "myCareMenu", colNum);
 
 	}
 
@@ -286,12 +285,12 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click My Care Menu
-		clickElement("MC0301", "myCareMenu");
+		clickElementJSExecute("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
-		clickElement("MC0302", "myCareMenu");
+		clickElementJSExecute("MC0302", "myCareMenu");
 		// Verify Page Title
-		verifyPageTitle("MC0302", "myCareMenu");
-		
+		verifyPageTitle("MC0302", "myCareMenu", colNum);
+
 	}
 
 	// My Medical Supplies and Equipment
@@ -300,11 +299,11 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click My Care Menu
-		clickElement("MC0401", "myCareMenu");
+		clickElementJSExecute("MC0401", "myCareMenu");
 		// Click My Medical Supp Sub-menu
-		clickElement("MC0402", "myCareMenu");
+		clickElementJSExecute("MC0402", "myCareMenu");
 		// Verify Page Title
-		verifyPageTitle("MC0402", "myCareMenu");
+		verifyPageTitle("MC0402", "myCareMenu", colNum);
 	}
 
 	// Claims
@@ -313,13 +312,14 @@ public class EasyCare extends BaseTest_AllLinks {
 	public void claims() throws InterruptedException, IOException {
 
 		loginEasyCare();
+		Thread.sleep(3000);
 		// Click Claims Menu
-		clickElement("CL0101", "claimsMenu");
+		clickElementJSExecute("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
-		clickElement("CL0102", "claimsMenu");
-		
+		clickElementJSExecute("CL0102", "claimsMenu");
+
 		// Verify Page Title
-		verifyPageTitle("CL0102", "claimsMenu");
+		verifyPageTitle("CL0102", "claimsMenu", colNum);
 		// Click Submit Reimbursement Request Link
 		clickElementJSExecute("CL0103", "claimsMenu");
 	}
@@ -331,29 +331,30 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Resources Menu
-		clickElement("RE0101", "resourcesMenu");
+		clickElementJSExecute("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
-		clickElement("RE0102", "resourcesMenu");
+		clickElementJSExecute("RE0102", "resourcesMenu");
 		// Verify Page Title
-		verifyPageTitle("RE0102", "resourcesMenu");
+		verifyPageTitle("RE0102", "resourcesMenu", colNum);
 		// Click View All Resources Link
-		clickElementChildWindow("RE0103", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0103", "resourcesMenu", colNum);
 		// Click Member Rewards Program Link
-		clickElementChildWindow("RE0108", "resourcesMenu");
-		// Click OTC and Grocery Card Link
-		clickElementChildWindow("RE0110", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0108", "resourcesMenu", colNum);
+		// Click OTC Benefits Link
+		openChildWindowVerifyTitle("RE0110", "resourcesMenu", colNum);
 		// Click Transportation Link
-		clickElementChildWindow("RE0104", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0104", "resourcesMenu", colNum);
 		// Click Drug benefits and Resources Link
-		clickElementChildWindow("RE0111", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0111", "resourcesMenu", colNum);
+
 		// Click Medication Therapy Management Program Link
-		clickElementChildWindow("RE0112", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0112", "resourcesMenu", colNum);
 		// Click 2023 Plan Materials Link
-		clickElementChildWindow("RE0113", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0113", "resourcesMenu", colNum);
 		// Click Forms and Personal Health Materials Link
-		clickElementChildWindow("RE0114", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0114", "resourcesMenu", colNum);
 		// Click Frequently Asked Questions Link
-		clickElementChildWindow("RE0107", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0107", "resourcesMenu", colNum);
 	}
 
 	// Benefit Partners
@@ -362,27 +363,27 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Resources Menu
-		clickElement("RE0201", "resourcesMenu");
+		clickElementJSExecute("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
-		clickElement("RE0202", "resourcesMenu");
+		clickElementJSExecute("RE0202", "resourcesMenu");
 		// Verify Page Title
-		verifyPageTitle("RE0202", "resourcesMenu");
+		verifyPageTitle("RE0202", "resourcesMenu", colNum);
 		// Click MedImpact Link
-		clickElementChildWindow("RE0206", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0206", "resourcesMenu", colNum);
 		// Click OTC and Grocery Card Link
-		clickElementChildWindow("RE0207", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0207", "resourcesMenu", colNum);
 		// Click Rewards Link
-		clickElementChildWindow("RE0209", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0209", "resourcesMenu", colNum);
 		// Click Carelon Link
-		clickElementChildWindow("RE0210", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0210", "resourcesMenu", colNum);
 		// Click Healthplex
-		clickElementChildWindow("RE0203", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0203", "resourcesMenu", colNum);
 		// Click Superior Vision
-		clickElementChildWindow("RE0204", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0204", "resourcesMenu", colNum);
 		// Click Click Modivcare
-		clickElementChildWindow("RE0205", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0205", "resourcesMenu", colNum);
 		// Click SilverSneakers Link
-		clickElementChildWindow("RE0211", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0211", "resourcesMenu", colNum);
 	}
 
 	// Grievances and Appeals
@@ -392,13 +393,13 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0101", "grievancesMenu");
+		clickElementJSExecute("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0102", "grievancesMenu");
+		clickElementJSExecute("GA0102", "grievancesMenu");
 		// Verify Page Title
-		verifyPageTitle("GA0102", "grievancesMenu");
-		// Click Learn About Complaints
-		clickElementChildWindow("GA0103", "grievancesMenu");
+		verifyPageTitle("GA0102", "grievancesMenu", colNum);
+		// Click Learn About Grievances
+		openChildWindowVerifyTitle("GA0103", "grievancesMenu", colNum);
 	}
 
 	// Appeals
@@ -407,13 +408,13 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0201", "grievancesMenu");
+		clickElementJSExecute("GA0201", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0202", "grievancesMenu");
+		clickElementJSExecute("GA0202", "grievancesMenu");
 		// Verify Page Title
-		verifyPageTitle("GA0202", "grievancesMenu");
+		verifyPageTitle("GA0202", "grievancesMenu", colNum);
 		// Click Learn About Appeals
-		clickElementChildWindow("GA0203", "grievancesMenu");
+		openChildWindowVerifyTitle("GA0203", "grievancesMenu", colNum);
 	}
 
 	// Communication Center
@@ -422,16 +423,16 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click Communication Center Menu
-		clickElement("CC0101", "comCenterMenu");
+		clickElementJSExecute("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
-		clickElement("CC0102", "comCenterMenu");
+		clickElementJSExecute("CC0102", "comCenterMenu");
 		// Verify Page Title
-		verifyPageTitle("CC0102", "comCenterMenu");
+		verifyPageTitle("CC0102", "comCenterMenu", colNum);
 		// Click Learn About Complaints
 		clickElementJSExecute("CC0103", "comCenterMenu");
 		driver.navigate().back();
 		// Click Send a Message
-		clickElement("CC0104", "comCenterMenu");
+		clickElementJSExecute("CC0104", "comCenterMenu");
 	}
 
 	// My Account
@@ -440,22 +441,23 @@ public class EasyCare extends BaseTest_AllLinks {
 
 		loginEasyCare();
 		// Click My Account Menu
-		clickElement("MA0101", "myAccountMenu");
+		clickElementJSExecute("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
-		clickElement("MA0102", "myAccountMenu");
+		clickElementJSExecute("MA0102", "myAccountMenu");
+		Thread.sleep(5000);
 		// Verify Page Title
-		verifyPageTitle("MA0102", "myAccountMenu");
+		verifyPageTitle("MA0102", "myAccountMenu", colNum);
 		// Click Request Change
-		clickElement("MA0103", "myAccountMenu");
+		clickElementJSExecute("MA0103", "myAccountMenu");
 		// Click Cancel
-		clickElement("MA0104", "myAccountMenu");
+		clickElementJSExecute("MA0104", "myAccountMenu");
 		// Click Change Password
-		clickElement("MA0105", "myAccountMenu");
+		clickElementJSExecute("MA0105", "myAccountMenu");
 
 	}
 
 	@AfterTest(alwaysRun = true)
 	public void tearUp() {
-		 driver.close();
+		driver.quit();
 	}
 }

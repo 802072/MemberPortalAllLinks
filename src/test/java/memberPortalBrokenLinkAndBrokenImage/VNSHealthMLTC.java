@@ -16,11 +16,12 @@ import extentReport.BaseTest_BLBI;
 
 public class VNSHealthMLTC extends BaseTest_BLBI {
 	dataDriven d = new dataDriven();
+	int colNum = 7;
 
 	@BeforeSuite
 	public void initializeReport() {
 		initialiseExtentReports("MemberPortalAutomationMLTC_BLBI.html",
-				"Member Portal: VNS Health MLTC Plan Automation Report");
+				"Member Portal: MLTC Health Plan Broken Link and Image Test Report");
 	}
 
 	public void loginMLTC() throws IOException, InterruptedException {
@@ -37,6 +38,17 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		Thread.sleep(3000);
+		// Verify Member's Name is Displayed
+		assertEquals("HP0101", "homePage", colNum);
+
+		// Verify Phone Number and Operation Hours are Displayed
+		assertEquals("HP0119", "homePage", colNum);
+
+		// Verify Health Plan is Displayed
+		assertEquals("HP0120", "homePage", colNum);
+
+		submitFeedback("HP0114");
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -47,10 +59,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Benefits
-		clickElement("BE0101", "benefitsMenu");
+		clickElementJSExecute("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
-		clickElement("BE0102", "benefitsMenu");
+		clickElementJSExecute("BE0102", "benefitsMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("BE0102", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -61,10 +77,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Benefits
-		clickElement("BE0301", "benefitsMenu");
+		clickElementJSExecute("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
-		clickElement("BE0302", "benefitsMenu");
+		clickElementJSExecute("BE0302", "benefitsMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("BE0302", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 
@@ -76,10 +96,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Benefits
-		clickElement("BE0701", "benefitsMenu");
+		clickElementJSExecute("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
-		clickElement("BE0702", "benefitsMenu");
+		clickElementJSExecute("BE0702", "benefitsMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("BE0702", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -91,10 +115,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click My Care Menu
-		clickElement("MC0201", "myCareMenu");
+		clickElementJSExecute("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
-		clickElement("MC0202", "myCareMenu");
+		clickElementJSExecute("MC0202", "myCareMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("MC0202", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -105,10 +133,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click My Care Menu
-		clickElement("MC0301", "myCareMenu");
+		clickElementJSExecute("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
-		clickElement("MC0302", "myCareMenu");
+		clickElementJSExecute("MC0302", "myCareMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("MC0302", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -119,10 +151,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click My Care Menu
-		clickElement("MC0401", "myCareMenu");
+		clickElementJSExecute("MC0401", "myCareMenu");
 		// Click My Medica Supp Sub-menu
-		clickElement("MC0402", "myCareMenu");
+		clickElementJSExecute("MC0402", "myCareMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("MC0402", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -134,10 +170,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Claims Menu
-		clickElement("CL0101", "claimsMenu");
+		clickElementJSExecute("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
-		clickElement("CL0102", "claimsMenu");
+		clickElementJSExecute("CL0102", "claimsMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("CL0102", "claimsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -149,10 +189,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Resources Menu
-		clickElement("RE0101", "resourcesMenu");
+		clickElementJSExecute("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
-		clickElement("RE0102", "resourcesMenu");
+		clickElementJSExecute("RE0102", "resourcesMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("RE0102", "resourcesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -163,10 +207,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Resources Menu
-		clickElement("RE0201", "resourcesMenu");
+		clickElementJSExecute("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
-		clickElement("RE0202", "resourcesMenu");
+		clickElementJSExecute("RE0202", "resourcesMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("RE0202", "resourcesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -178,10 +226,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0101", "grievancesMenu");
+		clickElementJSExecute("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0102", "grievancesMenu");
+		clickElementJSExecute("GA0102", "grievancesMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("GA0102", "grievancesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -192,10 +244,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0201", "grievancesMenu");
+		clickElementJSExecute("GA0201", "grievancesMenu");
 		// Click Appeals Sub-menu
-		clickElement("GA0202", "grievancesMenu");
+		clickElementJSExecute("GA0202", "grievancesMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("GA0202", "grievancesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -206,10 +262,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click Communication Center Menu
-		clickElement("CC0101", "comCenterMenu");
+		clickElementJSExecute("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
-		clickElement("CC0102", "comCenterMenu");
+		clickElementJSExecute("CC0102", "comCenterMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("CC0102", "comCenterMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -220,10 +280,14 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 		loginMLTC();
 		// Click My Account Menu
-		clickElement("MA0101", "myAccountMenu");
+		clickElementJSExecute("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
-		clickElement("MA0102", "myAccountMenu");
+		clickElementJSExecute("MA0102", "myAccountMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("MA0102", "myAccountMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 
@@ -231,6 +295,6 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 
 	@AfterTest(alwaysRun = true)
 	public void tearUp() {
-		driver.close();
+		driver.quit();
 	}
 }

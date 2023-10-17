@@ -17,7 +17,8 @@ import extentReport.BaseTest_BLBI;
 
 public class VNSHealthMLTC extends BaseTest_AllLinks  {
 	dataDriven d = new dataDriven();
-
+	int colNum= 7;
+	
 	@BeforeSuite
 	public void initializeReport() {
 	initialiseExtentReports("MemberPortalAutomationMLTC.html", "Member Portal: VNS Health MLTC Plan Automation Report");
@@ -36,39 +37,66 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 	public void homePage() throws InterruptedException, IOException {
 
 		loginMLTC();
-		clickElement("HP0101", "homePage");
+		
+		// Verify Member's Name is Displayed
+		assertEquals("HP0101", "homePage", colNum);
+
+		// Verify Phone Number and Operation Hours are Displayed
+		assertEquals("HP0119", "homePage", colNum);
+
+		// Verify Health Plan is Displayed
+		assertEquals("HP0120", "homePage", colNum);
+		
+		// Click Name
+		clickElementJSExecute("HP0101", "homePage");
 		driver.navigate().back();
+		
 		// Click View And Print ID Card
-		clickElement("HP0102", "homePage");
+		clickElementJSExecute("HP0102", "homePage");
+		verifyPageTitle("HP0102", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click Check My Benefits
 		clickElementJSExecute("HP0103", "homePage");
+		verifyPageTitle("HP0103", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click View My Care Team
 		clickElementJSExecute("HP0104", "homePage");
+		verifyPageTitle("HP0104", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click Review My Medical Supplies
 		clickElementJSExecute("HP0105", "homePage");
+		verifyPageTitle("HP0105", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click My Action Items
 		clickElementJSExecute("HP0106", "homePage");
+		verifyPageTitle("HP0106", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click View Claims
 		clickElementJSExecute("HP0107", "homePage");
+		verifyPageTitle("HP0107", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click View Service Authorizations
 		clickElementJSExecute("HP0108", "homePage");
+		verifyPageTitle("HP0108", "homePage", colNum);
+		
 		// Click Technical Support Link
-		clickElement("HP0109", "homePage");
+		clickElementJSExecute("HP0109", "homePage");
+		verifyPageTitle("HP0109", "homePage", colNum);
 		driver.navigate().back();
+		
 		// Click Terms of Use Link
-		clickElementChildWindow("HP0110", "homePage");
+		openChildWindowVerifyTitle("HP0110", "homePage", colNum);
 		// Click Privacy Policy Link
-		clickElementChildWindow("HP0111", "homePage");
-		// Click Feedback Slider
-		clickElement("HP0113", "homePage");
-		// Click Close
-		clickElement("HP0114", "homePage");
+		openChildWindowVerifyTitle("HP0111", "homePage", colNum);
+
+		
+		submitFeedback("HP0114");
 	}
 
 	// Benefits
@@ -77,19 +105,22 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Benefits
-		clickElement("BE0101", "benefitsMenu");
+		clickElementJSExecute("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
-		clickElement("BE0102", "benefitsMenu");
+		clickElementJSExecute("BE0102", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0102", "benefitsMenu", colNum);
+		
 		// Click View Member Handbook
-		clickElementChildWindow("BE0103", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0103", "benefitsMenu", colNum);
 		// Click Member Handbook link
-		clickElementChildWindow("BE0104", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0104", "benefitsMenu", colNum);
 		// Click Healthplex
-		clickElementChildWindow("BE0105", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0105", "benefitsMenu", colNum);
 		// Click Superior Vision
-		clickElementChildWindow("BE0106", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0106", "benefitsMenu", colNum);
 		// Click Click Modivcare
-		clickElementChildWindow("BE0107", "benefitsMenu");
+		openChildWindowVerifyTitle("BE0107", "benefitsMenu", colNum);
 	}
 
 	// ID Card
@@ -98,15 +129,19 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Benefits
-		clickElement("BE0301", "benefitsMenu");
+		clickElementJSExecute("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
-		clickElement("BE0302", "benefitsMenu");
+		clickElementJSExecute("BE0302", "benefitsMenu");
 		Thread.sleep(5000);
+		// Verify Page Title
+		verifyPageTitle("BE0302", "benefitsMenu", colNum);
+		
 		// Click Communication Center
-		clickElement("BE0303", "benefitsMenu");
+		clickElementJSExecute("BE0303", "benefitsMenu");
+		verifyPageTitle("BE0303", "benefitsMenu", colNum);
 		driver.navigate().back();
 		// Click Return to Home
-		clickElement("BE0304", "benefitsMenu");
+		clickElementJSExecute("BE0304", "benefitsMenu");
 
 	}
 
@@ -116,9 +151,11 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Benefits
-		clickElement("BE0701", "benefitsMenu");
+		clickElementJSExecute("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
-		clickElement("BE0702", "benefitsMenu");
+		clickElementJSExecute("BE0702", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0702", "benefitsMenu", colNum);
 	}
 
 	// My Care
@@ -128,11 +165,14 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click My Care Menu
-		clickElement("MC0201", "myCareMenu");
+		clickElementJSExecute("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
-		clickElement("MC0202", "myCareMenu");
+		clickElementJSExecute("MC0202", "myCareMenu");
+		// Verify Page Title
+		verifyPageTitle("MC0202", "myCareMenu", colNum);
+		
 		// Click Communication Center
-		clickElementChildWindow("MC0203", "myCareMenu");
+		openChildWindowVerifyTitle("MC0203", "myCareMenu", colNum);
 
 	}
 
@@ -142,9 +182,11 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click My Care Menu
-		clickElement("MC0301", "myCareMenu");
+		clickElementJSExecute("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
-		clickElement("MC0302", "myCareMenu");
+		clickElementJSExecute("MC0302", "myCareMenu");
+		// Verify Page Title
+		verifyPageTitle("MC0302", "myCareMenu", colNum);
 	}
 
 	// My Medical Supplies and Equipment
@@ -153,9 +195,11 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click My Care Menu
-		clickElement("MC0401", "myCareMenu");
+		clickElementJSExecute("MC0401", "myCareMenu");
 		// Click My Medica Supp Sub-menu
-		clickElement("MC0402", "myCareMenu");
+		clickElementJSExecute("MC0402", "myCareMenu");
+		// Verify Page Title
+		verifyPageTitle("MC0402", "myCareMenu", colNum);
 	}
 
 	// Claims
@@ -165,9 +209,12 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Claims Menu
-		clickElement("CL0101", "claimsMenu");
+		clickElementJSExecute("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
-		clickElement("CL0102", "claimsMenu");
+		clickElementJSExecute("CL0102", "claimsMenu");
+		// Verify Page Title
+		verifyPageTitle("CL0102", "claimsMenu", colNum);
+		
 		// Click Submit Reimbursement Request Link
 		clickElementJSExecute("CL0103", "claimsMenu");
 	}
@@ -179,19 +226,22 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Resources Menu
-		clickElement("RE0101", "resourcesMenu");
+		clickElementJSExecute("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
-		clickElement("RE0102", "resourcesMenu");
+		clickElementJSExecute("RE0102", "resourcesMenu");
+		// Verify Page Title
+		verifyPageTitle("RE0102", "resourcesMenu", colNum);
+		
 		// Click View All Resources Link
-		clickElementChildWindow("RE0103", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0103", "resourcesMenu", colNum);
 		// Click Transportation Link
-		clickElementChildWindow("RE0104", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0104", "resourcesMenu", colNum);
 		// Click Ordering Medical Supplies Link
-		clickElementChildWindow("RE0105", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0105", "resourcesMenu", colNum);
 		// Click Member Materials and Forms Link
-		clickElementChildWindow("RE0106", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0106", "resourcesMenu", colNum);
 		// Click Frequently Asked Questions Link
-		clickElementChildWindow("RE0107", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0107", "resourcesMenu", colNum);
 	}
 
 	// Benefit Partners
@@ -200,15 +250,18 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Resources Menu
-		clickElement("RE0201", "resourcesMenu");
+		clickElementJSExecute("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
-		clickElement("RE0202", "resourcesMenu");
+		clickElementJSExecute("RE0202", "resourcesMenu");
+		// Verify Page Title
+		verifyPageTitle("RE0202", "resourcesMenu", colNum);
+		
 		// Click Healthplex
-		clickElementChildWindow("RE0203", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0203", "resourcesMenu", colNum);
 		// Click Superior Vision
-		clickElementChildWindow("RE0204", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0204", "resourcesMenu", colNum);
 		// Click Click Modivcare
-		clickElementChildWindow("RE0205", "resourcesMenu");
+		openChildWindowVerifyTitle("RE0205", "resourcesMenu", colNum);
 	}
 
 	// Grievances and Appeals
@@ -218,11 +271,14 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0101", "grievancesMenu");
+		clickElementJSExecute("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0102", "grievancesMenu");
+		clickElementJSExecute("GA0102", "grievancesMenu");
+		// Verify Page Title
+		verifyPageTitle("GA0102", "grievancesMenu", colNum);
+		
 		// Click Learn About Complaints
-		clickElementChildWindow("GA0103", "grievancesMenu");
+		openChildWindowVerifyTitle("GA0103", "grievancesMenu", colNum);
 	}
 
 	// Appeals
@@ -231,11 +287,14 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0201", "grievancesMenu");
+		clickElementJSExecute("GA0201", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0202", "grievancesMenu");
+		clickElementJSExecute("GA0202", "grievancesMenu");
+		// Verify Page Title
+		verifyPageTitle("GA0202", "grievancesMenu", colNum);
+		
 		// Click Learn About Appeals
-		clickElementChildWindow("GA0203", "grievancesMenu");
+		openChildWindowVerifyTitle("GA0203", "grievancesMenu", colNum);
 	}
 
 	// Communication Center
@@ -244,15 +303,18 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click Communication Center Menu
-		clickElement("CC0101", "comCenterMenu");
+		clickElementJSExecute("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
-		clickElement("CC0102", "comCenterMenu");
+		clickElementJSExecute("CC0102", "comCenterMenu");
+		// Verify Page Title
+		verifyPageTitle("CC0102", "comCenterMenu", colNum);
+		
 		// Click Learn About Complaints
 		clickElementJSExecute("CC0103", "comCenterMenu");
 
 		driver.navigate().back();
 		// Click Send a Message
-		clickElement("CC0104", "comCenterMenu");
+		clickElementJSExecute("CC0104", "comCenterMenu");
 	}
 
 	// My Account
@@ -261,20 +323,23 @@ public class VNSHealthMLTC extends BaseTest_AllLinks  {
 
 		loginMLTC();
 		// Click My Account Menu
-		clickElement("MA0101", "myAccountMenu");
+		clickElementJSExecute("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
-		clickElement("MA0102", "myAccountMenu");
+		clickElementJSExecute("MA0102", "myAccountMenu");
+		// Verify Page Title
+		verifyPageTitle("MA0102", "myAccountMenu", colNum);
+		
 		// Click Request Change
-		clickElement("MA0103", "myAccountMenu");
+		clickElementJSExecute("MA0103", "myAccountMenu");
 		// Click Cancel
-		clickElement("MA0104", "myAccountMenu");
+		clickElementJSExecute("MA0104", "myAccountMenu");
 		// Click Change Password
-		clickElement("MA0105", "myAccountMenu");
+		clickElementJSExecute("MA0105", "myAccountMenu");
 
 	}
 
 	@AfterTest(alwaysRun = true)
 	public void tearUp() {
-		driver.close();
+		driver.quit();
 	}
 }

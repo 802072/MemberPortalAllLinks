@@ -15,11 +15,12 @@ import extentReport.BaseTest_BLBI;
 
 public class EasyCarePlus extends BaseTest_BLBI {
 	dataDriven d = new dataDriven();
+	int colNum = 9;
 
 	@BeforeSuite
 	public void initializeReport() {
 		initialiseExtentReports("MemberPortalAutomationEasyCarePlus_BLBI.html",
-				"Member Portal: Easy Care Plus Plan Automation Report");
+				"Member Portal: EasyCare Plus Plan Broken Link and Image Test Report");
 	}
 
 	public void loginECPlus() throws IOException, InterruptedException {
@@ -36,6 +37,17 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		Thread.sleep(3000);
+		// Verify Member's Name is Displayed
+		assertEquals("HP0101", "homePage", colNum);
+
+		// Verify Phone Number and Operation Hours are Displayed
+		assertEquals("HP0119", "homePage", colNum);
+
+		// Verify Health Plan is Displayed
+		assertEquals("HP0120", "homePage", colNum);
+
+		submitFeedback("HP0115");
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -45,11 +57,14 @@ public class EasyCarePlus extends BaseTest_BLBI {
 	public void benefits() throws InterruptedException, IOException {
 
 		loginECPlus();
-		// Click Benefits
-		clickElement("BE0101", "benefitsMenu");
-		// Click Benefits Sub-menu
-		clickElement("BE0102", "benefitsMenu");
 		Thread.sleep(3000);
+		// Click Benefits
+		clickElementJSExecute("BE0101", "benefitsMenu");
+		// Click Benefits Sub-menu
+		clickElementJSExecute("BE0102", "benefitsMenu");
+		verifyPageTitle("BE0102", "benefitsMenu", colNum);
+
+		Thread.sleep(5000);
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -60,10 +75,12 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Benefits Menu
-		clickElement("BE0201", "benefitsMenu");
+		clickElementJSExecute("BE0201", "benefitsMenu");
 		// Click Pharmacy And Prescriptions Sub-menu
-		clickElement("BE0202", "benefitsMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("BE0202", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0202", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 
@@ -75,10 +92,13 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Benefits
-		clickElement("BE0301", "benefitsMenu");
+		clickElementJSExecute("BE0301", "benefitsMenu");
 		// Click ID Card Sub-menu
-		clickElement("BE0302", "benefitsMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("BE0302", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0302", "benefitsMenu", colNum);
+
+		Thread.sleep(5000);
 		testBrokenImages();
 		testBrokenLinks();
 
@@ -90,13 +110,16 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Benefits Menu
-		clickElement("BE0401", "benefitsMenu");
+		clickElementJSExecute("BE0401", "benefitsMenu");
 		// Click OTC Benefits Sub-menu
-		clickElement("BE0402", "benefitsMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("BE0402", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0402", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
+
 
 	// Rewards
 	@Test(groups = "Benefits")
@@ -104,10 +127,12 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Benefits
-		clickElement("BE0601", "benefitsMenu");
+		clickElementJSExecute("BE0601", "benefitsMenu");
 		// Click Rewards Sub-menu
-		clickElement("BE0602", "benefitsMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("BE0602", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0602", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -118,10 +143,12 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Benefits
-		clickElement("BE0701", "benefitsMenu");
+		clickElementJSExecute("BE0701", "benefitsMenu");
 		// Click planHistory Sub-menu
-		clickElement("BE0702", "benefitsMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("BE0702", "benefitsMenu");
+		// Verify Page Title
+		verifyPageTitle("BE0702", "benefitsMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -133,10 +160,12 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click My Care Menu
-		clickElement("MC0101", "myCareMenu");
+		clickElementJSExecute("MC0101", "myCareMenu");
 		// Click My PCP Sub-menu
-		clickElement("MC0102", "myCareMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("MC0102", "myCareMenu");
+		// Verify Page Title
+		verifyPageTitle("MC0102", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -147,10 +176,13 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click My Care Menu
-		clickElement("MC0201", "myCareMenu");
+		clickElementJSExecute("MC0201", "myCareMenu");
 		// Click myHealthPlanCareTeam Sub-menu
-		clickElement("MC0202", "myCareMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("MC0202", "myCareMenu");
+
+		// Verify Page Title
+		verifyPageTitle("MC0202", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 
@@ -162,10 +194,12 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click My Care Menu
-		clickElement("MC0301", "myCareMenu");
+		clickElementJSExecute("MC0301", "myCareMenu");
 		// Click serviceAuthorizationsSub-menu
-		clickElement("MC0302", "myCareMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("MC0302", "myCareMenu");
+		// Verify Page Title
+		verifyPageTitle("MC0302", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -176,10 +210,13 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click My Care Menu
-		clickElement("MC0401", "myCareMenu");
-		// Click My Medica Supp Sub-menu
-		clickElement("MC0402", "myCareMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("MC0401", "myCareMenu");
+		// Click My Medical Supp Sub-menu
+		clickElementJSExecute("MC0402", "myCareMenu");
+
+		// Verify Page Title
+		verifyPageTitle("MC0402", "myCareMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -191,14 +228,16 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Claims Menu
-		clickElement("CL0101", "claimsMenu");
+		clickElementJSExecute("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
-		clickElement("CL0102", "claimsMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("CL0102", "claimsMenu");
+		
+		// Verify Page Title
+		verifyPageTitle("CL0102", "claimsMenu", colNum);
+		
 		testBrokenImages();
 		testBrokenLinks();
 	}
-
 	// Resources
 	// My Plan Resources
 	@Test(groups = "Resources")
@@ -206,10 +245,13 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Resources Menu
-		clickElement("RE0101", "resourcesMenu");
+		clickElementJSExecute("RE0101", "resourcesMenu");
 		// Click My Plan Resources Sub-menu
-		clickElement("RE0102", "resourcesMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("RE0102", "resourcesMenu");
+
+		// Verify Page Title
+		verifyPageTitle("RE0102", "resourcesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -220,10 +262,12 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Resources Menu
-		clickElement("RE0201", "resourcesMenu");
+		clickElementJSExecute("RE0201", "resourcesMenu");
 		// Click Benefit Partners Sub-menu
-		clickElement("RE0202", "resourcesMenu");
-		Thread.sleep(3000);
+		clickElementJSExecute("RE0202", "resourcesMenu");
+		// Verify Page Title
+		verifyPageTitle("RE0202", "resourcesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -235,10 +279,14 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0101", "grievancesMenu");
+		clickElementJSExecute("GA0101", "grievancesMenu");
 		// Click Grievances Sub-menu
-		clickElement("GA0102", "grievancesMenu");
+		clickElementJSExecute("GA0102", "grievancesMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("GA0102", "grievancesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -249,10 +297,14 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Grievances and Appeals Menu
-		clickElement("GA0201", "grievancesMenu");
+		clickElementJSExecute("GA0201", "grievancesMenu");
 		// Click Appeals Sub-menu
-		clickElement("GA0202", "grievancesMenu");
+		clickElementJSExecute("GA0202", "grievancesMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("GA0202", "grievancesMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -263,10 +315,14 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click Communication Center Menu
-		clickElement("CC0101", "comCenterMenu");
+		clickElementJSExecute("CC0101", "comCenterMenu");
 		// Click Communication Center Sub-menu
-		clickElement("CC0102", "comCenterMenu");
+		clickElementJSExecute("CC0102", "comCenterMenu");
 		Thread.sleep(3000);
+
+		// Verify Page Title
+		verifyPageTitle("CC0102", "comCenterMenu", colNum);
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -277,10 +333,14 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 		loginECPlus();
 		// Click My Account Menu
-		clickElement("MA0101", "myAccountMenu");
+		clickElementJSExecute("MA0101", "myAccountMenu");
 		// Click My Account Sub Menu
-		clickElement("MA0102", "myAccountMenu");
+		clickElementJSExecute("MA0102", "myAccountMenu");
 		Thread.sleep(3000);
+		
+		// Verify Page Title
+		verifyPageTitle("MA0102", "myAccountMenu", colNum);
+		
 		testBrokenImages();
 		testBrokenLinks();
 
@@ -288,6 +348,6 @@ public class EasyCarePlus extends BaseTest_BLBI {
 
 	@AfterTest(alwaysRun = true)
 	public void tearUp() {
-		driver.close();
+		driver.quit();
 	}
 }

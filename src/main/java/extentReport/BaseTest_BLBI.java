@@ -2,7 +2,6 @@ package extentReport;
 
 import java.io.*;
 
-
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
@@ -27,7 +26,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -62,12 +63,11 @@ public class BaseTest_BLBI {
 	public static String screenshotsSubFolderName;
 	public static ExtentReports extentReports;
 	public static ExtentTest extentTest;
-	public static ExtentTest testStepExtentTest;
-	
+
 	dataDriven d = new dataDriven();
 	Date date = new Date();
 	String fileDate = date.toString().replace(":", "_").replace(" ", "_");
-	
+
 	String myurl = "";
 	HttpURLConnection myhuc = null;
 	int responseCode = 200;
@@ -142,10 +142,8 @@ public class BaseTest_BLBI {
 		ArrayList<?> TS02 = d.getData("LI02", "loginSteps");
 		WebElement uname = driver.findElement(By.xpath((String) TS02.get(5)));
 		uname.sendKeys(username);
-		extentTest.log(Status.PASS,
-				(String) TS02.get(1) + "Username is: " + username + ", Health Plan is: " + healthPlan,
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot("username" + fileDate + ".jpg"))
-						.build());
+		extentTest.log(Status.PASS, (String) TS02.get(1), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot("username" + fileDate + ".jpg")).build());
 
 		// enter password
 		ArrayList<?> TS03 = d.getData("LI03", "loginSteps");
@@ -245,7 +243,7 @@ public class BaseTest_BLBI {
 		Files.createDirectories(Paths.get(System.getProperty("user.dir") + "/screenshots/"));
 		BufferedImage image = Shutterbug.shootPage(driver, Capture.FULL, true).getImage();
 		String dest = "./screenshots/" + screenShotName;
-		
+
 		writeImage(image, "PNG", new File(dest));
 		return dest;
 	}
@@ -257,7 +255,7 @@ public class BaseTest_BLBI {
 			throw new UnableSaveSnapshotException(e);
 		}
 	}
-	
+
 	public void testBrokenImages() {
 		Integer iBrokenImageCount = 0;
 
@@ -288,10 +286,17 @@ public class BaseTest_BLBI {
 			// System.out.println(e.getMessage());
 		}
 		status = "passed";
-		 System.out.println("The page " + "has " + iBrokenImageCount + " broken image/s");
-		log("The page " + "has " + iBrokenImageCount + " broken image/s");
-	}
+		System.out.println("The page " + "has " + iBrokenImageCount + " broken image/s");
+		if(iBrokenImageCount>0) {
+			log("The page has " + iBrokenImageCount + " broken image/s.");
+		} else {
+			log("The page has no broken images.");
+		}
+		
+		log("*******************************************************");
 	
+	}
+
 	public void log(String description) {
 		// extentTest.log(Status.INFO,description);
 		extentTest.log(Status.PASS, description);
@@ -328,6 +333,7 @@ public class BaseTest_BLBI {
 			}
 
 			try {
+
 				myhuc = (HttpURLConnection) (new URL(myurl).openConnection());
 				myhuc.setRequestMethod("HEAD");
 				myhuc.connect();
@@ -349,32 +355,94 @@ public class BaseTest_BLBI {
 				ex.printStackTrace();
 			}
 		}
-		log("*******************************************************");
 		log("There are " + allList.size() + " urls in the page under test");
 		// allList.forEach(t -> log((String) t));
 		System.out.println(allList.size());
 		System.out.println(allList);
 
+		// Same Domain
 		log("A total of " + myDomainLst.size() + " urls in the page are from the same domain");
 		log("The urls from same domain are listed below:");
 		myDomainLst.forEach(t -> log((String) t));
-
-		log("*******************************************************");
-		log("A total of " + anotherDomainLst.size() + " urls in the page are from other domains");
-		log("The urls from other domains are listed below:");
-		anotherDomainLst.forEach(t -> log((String) t));
-
-		log("*******************************************************");
-		log("A total of " + emptyLst.size() + " urls are empty or unconfigured");
-		log("The empty urls or unconfigured urls are listed below:");
-		emptyLst.forEach(t -> log((String) t));
-
-		log("*******************************************************");
-		log("A total of " + brokenLst.size() + " links are broken");
-		log("The broken links are listed below:");
-		brokenLst.forEach(t -> log((String) t));
 		log("*******************************************************");
 
+		// Other Domains
+		if (anotherDomainLst.size() > 0) {
+			log("A total of " + anotherDomainLst.size() + " urls in the page are from other domains");
+			log("The urls from other domains are listed below:");
+			anotherDomainLst.forEach(t -> log((String) t));
+		} else {
+			log("There are no urls from other domains in the page under test.");
+		}
+
+		log("*******************************************************");
+
+		// Empty URL
+		if (emptyLst.size() > 0) {
+			log("A total of " + emptyLst.size() + " urls are empty or unconfigured");
+			log("The empty urls or unconfigured urls are listed below:");
+			emptyLst.forEach(t -> log((String) t));
+		} else {
+			log("There are no empty urls in the page under test.");
+		}
+
+		log("*******************************************************");
+
+		// Broken Link
+		if (brokenLst.size() > 0) {
+			log("A total of " + brokenLst.size() + " links are broken");
+			log("The broken links are listed below:");
+			brokenLst.forEach(t -> log((String) t));
+		} else {
+			log("There are no broken links in the page under test.");
+		}
+		log("*******************************************************");
 	}
 
+	public void verifyPageTitle(String rowName, String sheetName, int colNum) throws IOException {
+		ArrayList<?> list = d.getData(rowName, sheetName);
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, (String) list.get(colNum));
+		// log
+		extentTest.log(Status.PASS, "Verify Page Title is " + (String) list.get(colNum),
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+		System.out.println("TITLE IS : " + pageTitle);
+	}
+
+	public void assertEquals(String rowName, String sheetName, int colNum) throws InterruptedException, IOException {
+		ArrayList list = d.getData(rowName, sheetName);
+		Assert.assertEquals(driver.findElement(By.xpath((String) list.get(6))).getText(), (String) list.get(colNum));
+		Thread.sleep(10000);
+		extentTest.log(Status.PASS, "Verify " + (String) list.get(colNum) + " is Displayed", MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
+	}
+
+	public void submitFeedback(String smileyRowNum) throws IOException, InterruptedException {
+		ArrayList list = d.getData("HP0115A", "homePage");
+		// Click Feedback Slider
+		clickElementJSExecute("HP0113", "homePage");
+		// Switch to survey iframe
+		WebElement iframe = driver.findElement(By.xpath("//iframe[@name='survey-iframe-SI_6LszIRnZhItizxY']"));
+		driver.switchTo().frame(iframe);
+		// Click Smiley
+		clickElement(smileyRowNum, "homePage");
+
+		try {
+			WebElement input = driver.findElement(By.xpath((String) list.get(6)));
+			Actions action = new Actions(driver);
+			action.moveToElement(input).click().perform();
+			input.sendKeys((String) list.get(7));
+
+			// log
+			extentTest.log(Status.PASS, (String) list.get(2), MediaEntityBuilder
+					.createScreenCaptureFromPath(captureScreenshot("HP0115A" + "homePage" + fileDate + ".jpg")).build());
+		} catch (Exception e) {
+		}
+
+		// Click Submit Button
+		clickElement("HP0117", "homePage");
+		driver.switchTo().defaultContent();
+		// Click Feedback Slider
+		clickElementJSExecute("HP0113", "homePage");
+	}
 }

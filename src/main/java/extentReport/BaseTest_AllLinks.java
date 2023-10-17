@@ -1,10 +1,10 @@
 package extentReport;
 
 import java.io.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Method;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -90,7 +90,10 @@ public class BaseTest_AllLinks {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+		
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");  
+			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 
 			break;
@@ -128,15 +131,11 @@ public class BaseTest_AllLinks {
 		extentTest.log(Status.PASS, (String) TS01.get(1) + " URL is: " + loginPage, MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("Loginpage" + fileDate + ".jpg")).build());
 
-		try{
-		// enter username
-		sendKeys("LI02", "loginSteps", username);
-		// log username and health plan
-		extentTest.log(Status.PASS, "Username is: " + username + ", Health Plan is: " + healthPlan, MediaEntityBuilder
-				.createScreenCaptureFromPath(captureScreenshot("username" + fileDate + ".jpg")).build());
-		
+		try {
+			// enter username
+			sendKeys("LI02", "loginSteps", username);
 		} catch (Exception e) {
-			
+
 		}
 		// enter password
 		sendKeys("LI03", "loginSteps", password);
@@ -152,7 +151,7 @@ public class BaseTest_AllLinks {
 		ArrayList<?> list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		element.click();
-		Thread.sleep(6000);
+		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
 	}
@@ -166,7 +165,7 @@ public class BaseTest_AllLinks {
 				.createScreenCaptureFromPath(captureScreenshot("click sign on" + fileDate + ".jpg")).build());
 	}
 
-	public void clickElementChildWindow(String rowName, String sheetName) throws IOException, InterruptedException {
+	public void openChildWindowVerifyTitle(String rowName, String sheetName, int colNum) throws IOException, InterruptedException {
 		ArrayList<?> list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
@@ -175,11 +174,18 @@ public class BaseTest_AllLinks {
 		for (String winHandle : driver.getWindowHandles()) {
 			driver.switchTo().window(winHandle);
 		}
-
 		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
 				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
-	
+		String pageTitle = driver.getTitle();
+
+		//Verify Page Title in the New Windwow
+		if (!pageTitle.isEmpty()) {
+			verifyPageTitle(rowName, sheetName, colNum);
+		} else {
+			System.out.println("Page title not available");
+		}
+		
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
@@ -249,6 +255,7 @@ public class BaseTest_AllLinks {
 	}
 
 	public void submitFeedback(String smileyRowNum) throws IOException, InterruptedException {
+		ArrayList list = d.getData("HP0115A", "homePage");
 		// Click Feedback Slider
 		clickElementJSExecute("HP0113", "homePage");
 		// Switch to survey iframe
@@ -256,24 +263,19 @@ public class BaseTest_AllLinks {
 		driver.switchTo().frame(iframe);
 		// Click Smiley
 		clickElement(smileyRowNum, "homePage");
-//		WebElement input= findElement(By.xpath("/html[1]/body[1]/div[2]/div[1]/div[1]/main[1]/section[1]/div[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/input[1]"));
-		
-//		WebElement input= findElement(By.xpath("//input[@aria-labelledby='question-display-QID104']"));
-//		Actions action = new Actions (driver);
-		//action.moveToElement(input).click().perform();	
-		
-		//System.out.println("clicked input");
-//		input.sendKeys(Keys.DELETE);
-//		input.sendKeys("test");
-		//qn.getText();
-		//System.out.println("VALUE OF QN IS: "+qn.getText());
-		//if (input.isDisplayed()) {
-			
-		//	input.sendKeys("Test Feedback");
-		//}	
-		//else {
-		//System.out.println("input field not available");
-		//}
+
+		try {
+			WebElement input = driver.findElement(By.xpath((String) list.get(6)));
+			Actions action = new Actions(driver);
+			action.moveToElement(input).click().perform();
+			input.sendKeys((String) list.get(7));
+
+			// log
+			extentTest.log(Status.PASS, (String) list.get(2), MediaEntityBuilder
+					.createScreenCaptureFromPath(captureScreenshot("HP0115A" + "homePage" + fileDate + ".jpg")).build());
+		} catch (Exception e) {
+		}
+
 		// Click Submit Button
 		clickElement("HP0117", "homePage");
 		driver.switchTo().defaultContent();
@@ -281,37 +283,23 @@ public class BaseTest_AllLinks {
 		clickElementJSExecute("HP0113", "homePage");
 	}
 
-	public void assertEquals(String rowName, String sheetName) throws InterruptedException, IOException {
+	public void assertEquals(String rowName, String sheetName, int colNum) throws InterruptedException, IOException {
 		ArrayList list = d.getData(rowName, sheetName);
-		Assert.assertEquals(driver.findElement(By.xpath((String) list.get(6))).getText(), (String) list.get(7));
+		Assert.assertEquals(driver.findElement(By.xpath((String) list.get(6))).getText(), (String) list.get(colNum));
 		Thread.sleep(10000);
-		extentTest.log(Status.PASS, (String)list.get(2), MediaEntityBuilder
+		extentTest.log(Status.PASS, "Verify " + (String) list.get(colNum) + " is Displayed", MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 	}
-	
-public void assertIsDisplayed(String rowName, String sheetName) throws IOException {
-	
-	ArrayList<?> list = d.getData(rowName, sheetName);
-	WebElement element = driver.findElement(By.xpath((String) list.get(6)));
-	String elementText= element.getText();
-	
-	Assert.assertEquals((element).isDisplayed(), true);
-	
-	//log
-	extentTest.log(Status.PASS, "Verify Element is Displayed. Actual Value is: "+ elementText,
-			MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
-	
-	System.out.println("Text Value is: "+ element.getText());
-}
 
-public void verifyPageTitle(String rowName, String sheetName) throws IOException {
-	ArrayList<?> list = d.getData(rowName, sheetName);
-	String pageTitle= driver.getTitle();
-	Assert.assertEquals(pageTitle, (String) list.get(7));
-	//log
-	extentTest.log(Status.PASS, "Verify Page Title is "+(String) list.get(7)+"."+  " Actual Title is: "+ pageTitle,
-			MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
-	System.out.println("TITLE IS : "+pageTitle);
-}
+	public void verifyPageTitle(String rowName, String sheetName, int colNum) throws IOException {
+		ArrayList<?> list = d.getData(rowName, sheetName);
+		String pageTitle = driver.getTitle();
+		Assert.assertEquals(pageTitle, (String) list.get(colNum));
+		// log
+		extentTest.log(Status.PASS, "Verify Page Title is " + (String) list.get(colNum),
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+		System.out.println("TITLE IS : " + pageTitle);
+	}
 
+	
 }
