@@ -25,6 +25,7 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -100,7 +101,10 @@ public class BaseTest_BLBI {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			driver = new ChromeDriver();
+			
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--remote-allow-origins=*");  
+			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 
 			break;
@@ -182,7 +186,7 @@ public class BaseTest_BLBI {
 		element.click();
 		Thread.sleep(6000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
 	}
 
 	public void clickElementChildWindow(String rowName, String sheetName) throws IOException, InterruptedException {
@@ -197,7 +201,7 @@ public class BaseTest_BLBI {
 
 		Thread.sleep(5000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
@@ -209,7 +213,7 @@ public class BaseTest_BLBI {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		Thread.sleep(3000);
 		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
 	}
 
 	@AfterSuite
@@ -405,7 +409,7 @@ public class BaseTest_BLBI {
 		Assert.assertEquals(pageTitle, (String) list.get(colNum));
 		// log
 		extentTest.log(Status.PASS, "Verify Page Title is " + (String) list.get(colNum),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
 		System.out.println("TITLE IS : " + pageTitle);
 	}
 
@@ -414,7 +418,7 @@ public class BaseTest_BLBI {
 		Assert.assertEquals(driver.findElement(By.xpath((String) list.get(6))).getText(), (String) list.get(colNum));
 		Thread.sleep(10000);
 		extentTest.log(Status.PASS, "Verify " + (String) list.get(colNum) + " is Displayed", MediaEntityBuilder
-				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
+				.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName + fileDate + ".jpg")).build());
 	}
 
 	public void submitFeedback(String smileyRowNum) throws IOException, InterruptedException {

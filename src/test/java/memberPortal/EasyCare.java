@@ -108,7 +108,9 @@ public class EasyCare extends BaseTest_AllLinks {
 		openChildWindowVerifyTitle("HP0111", "homePage", colNum);
 
 		submitFeedback("HP0114");
-
+		
+		// Click View 2024 Benefits Link
+		openChildWindowVerifyTitle("HP0121", "homePage", colNum);
 	}
 
 	// Benefits
@@ -456,8 +458,4 @@ public class EasyCare extends BaseTest_AllLinks {
 
 	}
 
-	@AfterTest(alwaysRun = true)
-	public void tearUp() {
-		driver.quit();
-	}
 }

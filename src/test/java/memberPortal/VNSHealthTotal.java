@@ -38,6 +38,7 @@ public class VNSHealthTotal extends BaseTest_AllLinks {
 
 		loginTotal();
 		Thread.sleep(3000);
+
 		
 		// Verify Member's Name is Displayed
 		assertEquals("HP0101", "homePage", colNum);
@@ -48,7 +49,10 @@ public class VNSHealthTotal extends BaseTest_AllLinks {
 		// Verify Health Plan is Displayed
 		assertEquals("HP0120", "homePage", colNum);
 		
-		// Click Name
+		// Click View 2024 Benefits Link
+		openChildWindowVerifyTitle("HP0121", "homePage", colNum);
+		
+		// Click on Account Holder's Name
 		clickElementJSExecute("HP0101", "homePage");
 		driver.navigate().back();
 		
@@ -472,8 +476,5 @@ public class VNSHealthTotal extends BaseTest_AllLinks {
 
 	}
 
-	@AfterTest(alwaysRun = true)
-	public void tearUp() {
-		driver.quit();
-	}
+
 }

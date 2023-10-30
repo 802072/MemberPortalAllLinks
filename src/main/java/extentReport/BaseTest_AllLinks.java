@@ -32,6 +32,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -79,7 +80,6 @@ public class BaseTest_AllLinks {
 		extentReports.attachReporter(sparkReporter_all);
 		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
 		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-		// extentReports.setSystemInfo("Environment", "Test Environment");
 
 	}
 
@@ -120,7 +120,12 @@ public class BaseTest_AllLinks {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}
-
+	@AfterTest(alwaysRun = true)
+	public void tearUp() {
+		driver.quit();
+	}
+	
+	//Login
 	@SuppressWarnings("deprecation")
 	public void login(String username, String password, String healthPlan) throws InterruptedException, IOException {
 		// get login page
@@ -152,20 +157,30 @@ public class BaseTest_AllLinks {
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		element.click();
 		Thread.sleep(5000);
-		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+		extentTest.log(Status.PASS, (String) list.get(2)+" "+(String) list.get(3),
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName +  fileDate + ".jpg")).build());
 	}
 
+	public void clickElementJSExecute(String rowName, String sheetName) throws IOException, InterruptedException {
+		ArrayList<?> list = d.getData(rowName, sheetName);
+		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		Thread.sleep(3000);
+		extentTest.log(Status.PASS, (String) list.get(2)+" "+(String) list.get(3),
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
+	}
+	
 	public void clickElementLogin(String rowName, String sheetName) throws IOException, InterruptedException {
 		ArrayList<?> list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(5)));
 		element.click();
 		Thread.sleep(6000);
-		extentTest.log(Status.PASS, (String) list.get(1), MediaEntityBuilder
+		extentTest.log(Status.PASS, (String) list.get(1)+" "+(String) list.get(2), MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("click sign on" + fileDate + ".jpg")).build());
 	}
 
 	public void openChildWindowVerifyTitle(String rowName, String sheetName, int colNum) throws IOException, InterruptedException {
+		//Click
 		ArrayList<?> list = d.getData(rowName, sheetName);
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
@@ -175,30 +190,26 @@ public class BaseTest_AllLinks {
 			driver.switchTo().window(winHandle);
 		}
 		Thread.sleep(5000);
-		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+		//Log
+		extentTest.log(Status.PASS, (String) list.get(2)+ " "+(String) list.get(3),
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName +  fileDate + ".jpg")).build());
 		String pageTitle = driver.getTitle();
 
-		//Verify Page Title in the New Windwow
+		//Verify Page Title in the Child Windwow
 		if (!pageTitle.isEmpty()) {
 			verifyPageTitle(rowName, sheetName, colNum);
 		} else {
 			System.out.println("Page title not available");
 		}
 		
+		//Close child window
 		driver.close();
+		//Switch to Parent Window
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
 	}
 
-	public void clickElementJSExecute(String rowName, String sheetName) throws IOException, InterruptedException {
-		ArrayList<?> list = d.getData(rowName, sheetName);
-		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-		Thread.sleep(3000);
-		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
-	}
+
 
 	@SuppressWarnings("deprecation")
 	public void sendKeys(String rowName, String sheetName, String value) throws IOException {
@@ -214,8 +225,7 @@ public class BaseTest_AllLinks {
 	public void generateExtentReports() throws Exception {
 		extentReports.flush();
 		System.out.println("Report Generated");
-		// Desktop.getDesktop().browse(new File(".html").toURI());
-		// Desktop.getDesktop().browse(new File("FailedTests.html").toURI());
+
 	}
 
 	@AfterMethod
@@ -287,7 +297,7 @@ public class BaseTest_AllLinks {
 		ArrayList list = d.getData(rowName, sheetName);
 		Assert.assertEquals(driver.findElement(By.xpath((String) list.get(6))).getText(), (String) list.get(colNum));
 		Thread.sleep(10000);
-		extentTest.log(Status.PASS, "Verify " + (String) list.get(colNum) + " is Displayed", MediaEntityBuilder
+		extentTest.log(Status.INFO, "Verify " + (String) list.get(colNum) + " is Displayed", MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 	}
 
@@ -296,8 +306,8 @@ public class BaseTest_AllLinks {
 		String pageTitle = driver.getTitle();
 		Assert.assertEquals(pageTitle, (String) list.get(colNum));
 		// log
-		extentTest.log(Status.PASS, "Verify Page Title is " + (String) list.get(colNum),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName + fileDate + ".jpg")).build());
+		extentTest.log(Status.INFO, "Verify Page Title is " + (String) list.get(colNum),
+				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName +  fileDate + ".jpg")).build());
 		System.out.println("TITLE IS : " + pageTitle);
 	}
 

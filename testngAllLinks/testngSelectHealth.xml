@@ -273,7 +273,7 @@
 	
 	<!--EDGEBROWSER-->
 	
-<!--	
+	
 	<test
 		name="Homepage (edge)">
 		<parameter
@@ -531,6 +531,6 @@
 				</methods>
 			</class>
 		</classes>
-	</test>-->
+	</test>
 	
 </suite> 
