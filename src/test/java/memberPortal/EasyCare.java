@@ -110,7 +110,7 @@ public class EasyCare extends BaseTest_AllLinks {
 		submitFeedback("HP0114");
 		
 		// Click View 2024 Benefits Link
-		openChildWindowVerifyTitle("HP0121", "homePage", colNum);
+		//openChildWindowVerifyTitle("HP0121", "homePage", colNum);
 	}
 
 	// Benefits

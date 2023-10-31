@@ -50,7 +50,7 @@ public class SelectHealth extends BaseTest_BLBI {
 
 		testBrokenImages();
 		testBrokenLinks();
-		
+
 		submitFeedback("HP0116");
 	}
 
@@ -63,7 +63,7 @@ public class SelectHealth extends BaseTest_BLBI {
 		clickElementJSExecute("BE0101", "benefitsMenu");
 		// Click Benefits Sub-menu
 		clickElementJSExecute("BE0102", "benefitsMenu");
-		//Verify Title
+		// Verify Title
 		verifyPageTitle("BE0102", "benefitsMenu", colNum);
 		Thread.sleep(3000);
 		testBrokenImages();
@@ -99,7 +99,7 @@ public class SelectHealth extends BaseTest_BLBI {
 		Thread.sleep(3000);
 		// Verify Page Title
 		verifyPageTitle("BE0602", "benefitsMenu", colNum);
-		
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -133,7 +133,7 @@ public class SelectHealth extends BaseTest_BLBI {
 		Thread.sleep(3000);
 		// Verify Page Title
 		verifyPageTitle("MC0102", "myCareMenu", colNum);
-		
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -183,7 +183,7 @@ public class SelectHealth extends BaseTest_BLBI {
 		Thread.sleep(3000);
 		// Verify Page Title
 		verifyPageTitle("MC0402", "myCareMenu", colNum);
-		
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
@@ -306,8 +306,4 @@ public class SelectHealth extends BaseTest_BLBI {
 
 	}
 
-	@AfterTest(alwaysRun = true)
-	public void tearUp() {
-		driver.quit();
-	}
 }

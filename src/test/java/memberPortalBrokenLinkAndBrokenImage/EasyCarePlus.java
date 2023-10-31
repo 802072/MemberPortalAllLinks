@@ -120,7 +120,6 @@ public class EasyCarePlus extends BaseTest_BLBI {
 		testBrokenLinks();
 	}
 
-
 	// Rewards
 	@Test(groups = "Benefits")
 	public void rewards() throws InterruptedException, IOException {
@@ -231,13 +230,14 @@ public class EasyCarePlus extends BaseTest_BLBI {
 		clickElementJSExecute("CL0101", "claimsMenu");
 		// Click My Claims Sub-menu
 		clickElementJSExecute("CL0102", "claimsMenu");
-		
+
 		// Verify Page Title
 		verifyPageTitle("CL0102", "claimsMenu", colNum);
-		
+
 		testBrokenImages();
 		testBrokenLinks();
 	}
+
 	// Resources
 	// My Plan Resources
 	@Test(groups = "Resources")
@@ -337,17 +337,13 @@ public class EasyCarePlus extends BaseTest_BLBI {
 		// Click My Account Sub Menu
 		clickElementJSExecute("MA0102", "myAccountMenu");
 		Thread.sleep(3000);
-		
+
 		// Verify Page Title
 		verifyPageTitle("MA0102", "myAccountMenu", colNum);
-		
+
 		testBrokenImages();
 		testBrokenLinks();
 
 	}
 
-	@AfterTest(alwaysRun = true)
-	public void tearUp() {
-		driver.quit();
-	}
 }

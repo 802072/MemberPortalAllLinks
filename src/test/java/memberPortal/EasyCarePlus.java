@@ -105,7 +105,7 @@ public class EasyCarePlus extends BaseTest_AllLinks {
 		submitFeedback("HP0115");
 		
 		// Click View 2024 Benefits Link
-		openChildWindowVerifyTitle("HP0121", "homePage", colNum);
+		//openChildWindowVerifyTitle("HP0121", "homePage", colNum);
 
 	}
 

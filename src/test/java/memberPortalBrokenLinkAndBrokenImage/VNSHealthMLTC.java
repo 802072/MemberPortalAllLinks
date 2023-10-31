@@ -292,9 +292,4 @@ public class VNSHealthMLTC extends BaseTest_BLBI {
 		testBrokenLinks();
 
 	}
-
-	@AfterTest(alwaysRun = true)
-	public void tearUp() {
-		driver.quit();
-	}
 }
