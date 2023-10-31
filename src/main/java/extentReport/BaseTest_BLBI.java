@@ -34,6 +34,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -78,19 +79,11 @@ public class BaseTest_BLBI {
 		sparkReporter_all.config().setReportName(reportTitle);
 		sparkReporter_all.config().setTheme(Theme.STANDARD);
 
-//		//Failed Report
-//		ExtentSparkReporter sparkReporter_failed = new ExtentSparkReporter("FailedTestsEC.html");
-//		sparkReporter_failed.filter().statusFilter().as(new Status[] {Status.FAIL}).apply();
-//		sparkReporter_failed.config().setReportName("Failure Report");
-//
-//		extentReports = new ExtentReports();
-//		extentReports.attachReporter(sparkReporter_all, sparkReporter_failed);
-
 		extentReports = new ExtentReports();
 		extentReports.attachReporter(sparkReporter_all);
 		extentReports.setSystemInfo("OS", System.getProperty("os.name"));
 		extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
-		// extentReports.setSystemInfo("Environment", "Test Environment");
+		extentReports.setSystemInfo("Environment", "Test Environment");
 
 	}
 
@@ -101,9 +94,9 @@ public class BaseTest_BLBI {
 		switch (browserName.toLowerCase()) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
-			
+
 			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--remote-allow-origins=*");  
+			options.addArguments("--remote-allow-origins=*");
 			driver = new ChromeDriver(options);
 			driver.manage().window().maximize();
 
@@ -132,7 +125,11 @@ public class BaseTest_BLBI {
 
 	}
 
-	@SuppressWarnings("deprecation")
+	@AfterTest
+	public void tearUp() {
+		driver.quit();
+	}
+
 	public void login(String username, String password, String healthPlan) throws InterruptedException, IOException {
 		// get login page
 		ArrayList<?> TS01 = d.getData("LI01", "loginSteps");
@@ -153,7 +150,7 @@ public class BaseTest_BLBI {
 		ArrayList<?> TS03 = d.getData("LI03", "loginSteps");
 		WebElement pwd = driver.findElement(By.xpath((String) TS03.get(5)));
 		pwd.sendKeys(password);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		extentTest.log(Status.PASS, (String) TS03.get(1), MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("password" + fileDate + ".jpg")).build());
 
@@ -161,13 +158,13 @@ public class BaseTest_BLBI {
 		ArrayList<?> TS04 = d.getData("LI04", "loginSteps");
 		WebElement signOn = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn.click();
-		extentTest.log(Status.PASS, (String) TS04.get(1), MediaEntityBuilder
+		extentTest.log(Status.PASS, (String) TS04.get(1) + " " + (String) TS04.get(2), MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("signon" + fileDate + ".jpg")).build());
 
 		// enter password
 		WebElement pwd1 = driver.findElement(By.xpath((String) TS03.get(5)));
 		pwd1.sendKeys(password);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		extentTest.log(Status.PASS, (String) TS03.get(1), MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("password1" + fileDate + ".jpg")).build());
 
@@ -175,7 +172,7 @@ public class BaseTest_BLBI {
 		WebElement signOn1 = driver.findElement(By.xpath((String) TS04.get(5)));
 		signOn1.click();
 		Thread.sleep(5000);
-		extentTest.log(Status.PASS, (String) TS04.get(1), MediaEntityBuilder
+		extentTest.log(Status.PASS, (String) TS04.get(1) + " " + (String) TS04.get(2), MediaEntityBuilder
 				.createScreenCaptureFromPath(captureScreenshot("signon1" + fileDate + ".jpg")).build());
 		Thread.sleep(5000);
 	}
@@ -185,8 +182,8 @@ public class BaseTest_BLBI {
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		element.click();
 		Thread.sleep(6000);
-		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
+		extentTest.log(Status.PASS, (String) list.get(2) + " " + (String) list.get(3), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 	}
 
 	public void clickElementChildWindow(String rowName, String sheetName) throws IOException, InterruptedException {
@@ -200,8 +197,8 @@ public class BaseTest_BLBI {
 		}
 
 		Thread.sleep(5000);
-		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
+		extentTest.log(Status.PASS, (String) list.get(2) + " " + (String) list.get(3), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 		driver.close();
 		driver.switchTo().window(parentHandle);
 		Thread.sleep(5000);
@@ -212,16 +209,14 @@ public class BaseTest_BLBI {
 		WebElement element = driver.findElement(By.xpath((String) list.get(6)));
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		Thread.sleep(3000);
-		extentTest.log(Status.PASS, (String) list.get(2),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
+		extentTest.log(Status.PASS, (String) list.get(2) + " " + (String) list.get(3), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 	}
 
 	@AfterSuite
 	public void generateExtentReports() throws Exception {
 		extentReports.flush();
 		System.out.println("Report Generated");
-		// Desktop.getDesktop().browse(new File(".html").toURI());
-		// Desktop.getDesktop().browse(new File("FailedTests.html").toURI());
 	}
 
 	@AfterMethod
@@ -267,9 +262,6 @@ public class BaseTest_BLBI {
 		try {
 			iBrokenImageCount = 0;
 			List<WebElement> image_list = driver.findElements(By.xpath("//img"));
-
-			// System.out.println("The page under test has " + image_list.size() + "
-			// image/s");
 			log("The page under test has " + image_list.size() + " image/s");
 			for (WebElement img : image_list) {
 				if (img != null) {
@@ -291,18 +283,17 @@ public class BaseTest_BLBI {
 		}
 		status = "passed";
 		System.out.println("The page " + "has " + iBrokenImageCount + " broken image/s");
-		if(iBrokenImageCount>0) {
+		if (iBrokenImageCount > 0) {
 			log("The page has " + iBrokenImageCount + " broken image/s.");
 		} else {
 			log("The page has no broken images.");
 		}
-		
+
 		log("*******************************************************");
-	
+
 	}
 
 	public void log(String description) {
-		// extentTest.log(Status.INFO,description);
 		extentTest.log(Status.PASS, description);
 	}
 
@@ -315,15 +306,16 @@ public class BaseTest_BLBI {
 
 		List<WebElement> mylinks = driver.findElements(By.xpath("//a[@href]"));
 		Thread.sleep(5000);
-		System.out.println(mylinks);
+
 		Iterator<WebElement> myit = mylinks.iterator();
 		while (myit.hasNext()) {
 			myurl = myit.next().getAttribute("href");
 			allList.add(myurl);
-			System.out.println(myurl);
+			
 			if (myurl == null || myurl.isEmpty()) {
-				// System.out.println("Empty URL or an Unconfigured URL");
+				Thread.sleep(3000);
 				emptyLst.add(myurl);
+				System.out.println("empty url=" + myit.next().getAttribute("href"));
 				continue;
 			}
 			if (myurl.contains("https://vnshealth-crm--fullsbx.sandbox.my.site.com/member")) {
@@ -344,15 +336,16 @@ public class BaseTest_BLBI {
 				responseCode = myhuc.getResponseCode();
 
 				if (responseCode >= 400) {
+					Thread.sleep(3000);
 					System.out.println(myurl + " This link is broken");
 
 					brokenLst.add(myurl);
 					System.out.println("The broken link response code is:" + responseCode);
 
 				} else {
-					// System.out.println(myurl + " This link is valid");
+
 				}
-				// System.out.println("The response code is:"+responseCode);
+
 			} catch (MalformedURLException ex) {
 				ex.printStackTrace();
 			} catch (IOException ex) {
@@ -360,20 +353,21 @@ public class BaseTest_BLBI {
 			}
 		}
 		log("There are " + allList.size() + " urls in the page under test");
-		// allList.forEach(t -> log((String) t));
-		System.out.println(allList.size());
+		System.out.println("There are " + allList.size() + " urls in the page under test");
 		System.out.println(allList);
 
 		// Same Domain
-		log("A total of " + myDomainLst.size() + " urls in the page are from the same domain");
-		log("The urls from same domain are listed below:");
+		log(myDomainLst.size()
+				+ " urls in the page are from the same domain. The urls from same domain are listed below:");
+		// log("");
 		myDomainLst.forEach(t -> log((String) t));
 		log("*******************************************************");
 
 		// Other Domains
 		if (anotherDomainLst.size() > 0) {
-			log("A total of " + anotherDomainLst.size() + " urls in the page are from other domains");
-			log("The urls from other domains are listed below:");
+			log(anotherDomainLst.size()
+					+ " urls in the page are from other domains. The urls from other domains are listed below:");
+			// log();
 			anotherDomainLst.forEach(t -> log((String) t));
 		} else {
 			log("There are no urls from other domains in the page under test.");
@@ -383,9 +377,10 @@ public class BaseTest_BLBI {
 
 		// Empty URL
 		if (emptyLst.size() > 0) {
-			log("A total of " + emptyLst.size() + " urls are empty or unconfigured");
-			log("The empty urls or unconfigured urls are listed below:");
+			log("A total of " + emptyLst.size()
+					+ " urls are empty or unconfigured. The empty urls or unconfigured urls are listed below:");
 			emptyLst.forEach(t -> log((String) t));
+
 		} else {
 			log("There are no empty urls in the page under test.");
 		}
@@ -408,8 +403,8 @@ public class BaseTest_BLBI {
 		String pageTitle = driver.getTitle();
 		Assert.assertEquals(pageTitle, (String) list.get(colNum));
 		// log
-		extentTest.log(Status.PASS, "Verify Page Title is " + (String) list.get(colNum),
-				MediaEntityBuilder.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName+ fileDate + ".jpg")).build());
+		extentTest.log(Status.PASS, "Verify Page Title is " + (String) list.get(colNum), MediaEntityBuilder
+				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 		System.out.println("TITLE IS : " + pageTitle);
 	}
 
@@ -418,7 +413,7 @@ public class BaseTest_BLBI {
 		Assert.assertEquals(driver.findElement(By.xpath((String) list.get(6))).getText(), (String) list.get(colNum));
 		Thread.sleep(10000);
 		extentTest.log(Status.PASS, "Verify " + (String) list.get(colNum) + " is Displayed", MediaEntityBuilder
-				.createScreenCaptureFromPath(captureScreenshot(rowName +sheetName + fileDate + ".jpg")).build());
+				.createScreenCaptureFromPath(captureScreenshot(rowName + sheetName + fileDate + ".jpg")).build());
 	}
 
 	public void submitFeedback(String smileyRowNum) throws IOException, InterruptedException {
@@ -438,8 +433,10 @@ public class BaseTest_BLBI {
 			input.sendKeys((String) list.get(7));
 
 			// log
-			extentTest.log(Status.PASS, (String) list.get(2), MediaEntityBuilder
-					.createScreenCaptureFromPath(captureScreenshot("HP0115A" + "homePage" + fileDate + ".jpg")).build());
+			extentTest.log(Status.PASS, (String) list.get(2) + " " + (String) list.get(3),
+					MediaEntityBuilder
+							.createScreenCaptureFromPath(captureScreenshot("HP0115A" + "homePage" + fileDate + ".jpg"))
+							.build());
 		} catch (Exception e) {
 		}
 
@@ -449,4 +446,6 @@ public class BaseTest_BLBI {
 		// Click Feedback Slider
 		clickElementJSExecute("HP0113", "homePage");
 	}
+	
+	
 }
